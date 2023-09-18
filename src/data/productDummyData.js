@@ -144,9 +144,9 @@ export const productData = [
     "name": "HP Spectre x360",
     "price": 1399,
     "images": [
-      {"id": 1, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/c/0/c08279150_2.png"},
-      {"id": 2, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/6/Y/6Y638PA-1_T1679903268.png"},
-      {"id": 3, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/c/0/c08279096_1.png"}
+      { "id": 1, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/c/0/c08279150_2.png" },
+      { "id": 2, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/6/Y/6Y638PA-1_T1679903268.png" },
+      { "id": 3, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/c/0/c08279096_1.png" }
     ],
     "description": "Premium 2-in-1 laptop with stunning OLED display.",
     "isLike": false
@@ -210,8 +210,8 @@ export const productData = [
     "name": "HP EliteBook x360",
     "price": 1599,
     "images": [
-      {"id": 1, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/8/H/8H5V4PA-8_T1691464751.png"},
-      {"id": 2, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/8/H/8H5V4PA-11_T1691464759.png"}
+      { "id": 1, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/8/H/8H5V4PA-8_T1691464751.png" },
+      { "id": 2, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/8/H/8H5V4PA-11_T1691464759.png" }
     ],
     "description": "Business convertible laptop with high-security features.",
     "isLike": false
@@ -223,8 +223,8 @@ export const productData = [
     "name": "Asus ROG Zephyrus G14",
     "price": 1499,
     "images": [
-      {"id": 73, "link": "https://images.tokopedia.net/img/cache/700/OJWluG/2023/8/2/de944fc1-9072-490d-8bbe-16efff38c00c.jpg.webp?ect=4g"},
-      {"id": 74, "link": "https://images.tokopedia.net/img/cache/700/OJWluG/2023/8/2/12322bdc-19fc-4ab8-a571-48fb791fcf3f.jpg.webp?ect=4g"}
+      { "id": 1, "link": "https://images.tokopedia.net/img/cache/700/OJWluG/2023/8/2/de944fc1-9072-490d-8bbe-16efff38c00c.jpg.webp?ect=4g" },
+      { "id": 2, "link": "https://images.tokopedia.net/img/cache/700/OJWluG/2023/8/2/12322bdc-19fc-4ab8-a571-48fb791fcf3f.jpg.webp?ect=4g" }
     ],
     "description": "Powerful gaming laptop with Ryzen processor.",
     "isLike": false
@@ -236,8 +236,8 @@ export const productData = [
     "name": "iPhone 14 Pro",
     "price": 1199,
     "images": [
-      {"id": 75, "link": "https://example.com/iphone14pro_1.jpg"},
-      {"id": 76, "link": "https://example.com/iphone14pro_2.jpg"}
+      { "id": 1, "link": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_14_pro_deep_purple_1_6.jpg" },
+      { "id": 2, "link": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_14_pro_deep_purple_7_9.jpg" }
     ],
     "description": "Pro-level iPhone with advanced camera and performance.",
     "isLike": false
@@ -249,8 +249,8 @@ export const productData = [
     "name": "Samsung Galaxy Book Pro",
     "price": 1099,
     "images": [
-      {"id": 77, "link": "https://example.com/galaxy_book_pro_1.jpg"},
-      {"id": 78, "link": "https://example.com/galaxy_book_pro_2.jpg"}
+      { "id": 1, "link": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/5/7/9ac09e39-f81f-4e4f-96b4-5f5bef79b317.jpg.webp?ect=3g" },
+      { "id": 2, "link": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/5/7/837690f8-2f04-4e28-8e82-36586f1a7aba.jpg.webp?ect=3g" }
     ],
     "description": "Slim and lightweight laptop for on-the-go professionals.",
     "isLike": false
@@ -262,8 +262,8 @@ export const productData = [
     "name": "Microsoft Bluetooth Mouse",
     "price": 29,
     "images": [
-      {"id": 79, "link": "https://example.com/bluetooth_mouse_1.jpg"},
-      {"id": 80, "link": "https://example.com/bluetooth_mouse_2.jpg"}
+      { "id": 1, "link": "https://down-id.img.susercontent.com/file/64d3e5377d8f5cb4146024bdd6c7fa06" },
+      { "id": 2, "link": "https://down-id.img.susercontent.com/file/5127fe8bb4679d6706ca6a617cf61f5b" }
     ],
     "description": "Compact and portable Bluetooth mouse.",
     "isLike": false
@@ -275,8 +275,8 @@ export const productData = [
     "name": "Sony WF-1000XM4 Earbuds",
     "price": 249,
     "images": [
-      {"id": 81, "link": "https://example.com/wf1000xm4_1.jpg"},
-      {"id": 82, "link": "https://example.com/wf1000xm4_2.jpg"}
+      { "id": 1, "link": "https://sony.scene7.com/is/image/sonyglobalsolutions/01_1534_1083_mobile-2?$productIntroPlatemobile$&fmt=png-alpha" },
+      { "id": 2, "link": "https://sony.scene7.com/is/image/sonyglobalsolutions/1-wf1000xm4-mobile?$productIntroPlatemobile$&fmt=png-alpha" }
     ],
     "description": "Premium wireless earbuds with noise cancellation.",
     "isLike": false
@@ -288,8 +288,8 @@ export const productData = [
     "name": "Sony Xperia Tablet Z5",
     "price": 699,
     "images": [
-      {"id": 83, "link": "https://example.com/xperia_tablet_z5_1.jpg"},
-      {"id": 84, "link": "https://example.com/xperia_tablet_z5_2.jpg"}
+      { "id": 1, "link": "https://www.concept-phones.com/wp-content/uploads/2016/02/Sony-Xperia-Z5-Tablet-Ultra-concept-1-490x490.jpg" },
+      { "id": 2, "link": "https://www.concept-phones.com/wp-content/uploads/2016/02/Sony-Xperia-Z5-Tablet-Ultra-concept-2-490x375.jpg" }
     ],
     "description": "High-end Android tablet with stunning display.",
     "isLike": false
@@ -301,8 +301,8 @@ export const productData = [
     "name": "Dell Inspiron 14",
     "price": 799,
     "images": [
-      {"id": 85, "link": "https://example.com/inspiron14_1.jpg"},
-      {"id": 86, "link": "https://example.com/inspiron14_2.jpg"}
+      { "id": 1, "link": "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/inspiron-notebooks/14-7420/media-gallery/notebook-inspiron-7420-nt-green-gallery-3.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=586&qlt=100,1&resMode=sharp2&size=586,402&chrss=full" },
+      { "id": 2, "link": "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/inspiron-notebooks/14-7420/media-gallery/notebook-inspiron-7420-nt-green-gallery-5.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=616&qlt=100,1&resMode=sharp2&size=616,402&chrss=full" }
     ],
     "description": "Affordable laptop for everyday use.",
     "isLike": false
@@ -314,8 +314,8 @@ export const productData = [
     "name": "HP USB-C Dock",
     "price": 149,
     "images": [
-      {"id": 87, "link": "https://example.com/usb_c_dock_1.jpg"},
-      {"id": 88, "link": "https://example.com/usb_c_dock_2.jpg"}
+      { "id": 1, "link": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06297754.png" },
+      { "id": 2, "link": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06297847.png" }
     ],
     "description": "Docking station for increased connectivity.",
     "isLike": false
@@ -327,10 +327,270 @@ export const productData = [
     "name": "HP Omen 15",
     "price": 1599,
     "images": [
-      {"id": 89, "link": "https://example.com/omen15_1.jpg"},
-      {"id": 90, "link": "https://example.com/omen15_2.jpg"}
+      { "id": 1, "link": "https://www.hp.com/content/dam/sites/worldwide/personal-computers/consumer/gaming/omen/15-laptop-intel/300Hz_Image_Desktop.png" },
+      { "id": 2, "link": "https://www.hp.com/content/dam/sites/worldwide/personal-computers/consumer/gaming/omen/15-laptop-intel/ThreeSided_Image_Desktop.png" }
     ],
     "description": "Gaming laptop with high-refresh-rate display.",
+    "isLike": false
+  },
+  {
+    "id": 31,
+    "idCategory": 2,
+    "idBrand": 9,
+    "name": "Asus VivoBook 15",
+    "price": 599,
+    "images": [
+      { "id": 1, "link": "https://dlcdnwebimgs.asus.com/gain/24398c89-da05-4eed-b0f6-cb2e5c26b8e1/w800" },
+      { "id": 2, "link": "https://dlcdnwebimgs.asus.com/gain/916521d5-0135-4aec-a801-8bdd31473ff9/w800" }
+    ],
+    "description": "Affordable and stylish laptop for everyday tasks.",
+    "isLike": false
+  },
+  {
+    "id": 32,
+    "idCategory": 2,
+    "idBrand": 11,
+    "name": "Lenovo ThinkPad X1 Carbon",
+    "price": 1499,
+    "images": [
+      { "id": 1, "link": "https://p2-ofp.static.pub/ShareResource/na/products/thinkpad/400x300/lenovo-thinkpad-x1-carbon-gen-11-2023.png" },
+      { "id": 2, "link": "https://p1-ofp.static.pub/fes/cms/2023/02/10/m2x90er7aq4issqfzku0vuli4086vv761445.png" }
+    ],
+    "description": "Premium ultrabook with a durable design for business professionals.",
+    "isLike": false
+  },
+  {
+    "id": 33,
+    "idCategory": 4,
+    "idBrand": 8,
+    "name": "HP 27-inch Monitor",
+    "price": 299,
+    "images": [
+      { "id": 1, "link": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08541908.png" },
+      { "id": 2, "link": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08542233.png" }
+    ],
+    "description": "Full HD monitor for enhanced productivity.",
+    "isLike": false
+  },
+  {
+    "id": 34,
+    "idCategory": 1,
+    "idBrand": 1,
+    "name": "iPhone 14",
+    "price": 899,
+    "images": [
+      { "id": 1, "link": "https://example.com/iphone14_1.jpg" },
+      { "id": 2, "link": "https://example.com/iphone14_2.jpg" }
+    ],
+    "description": "Advanced iPhone with A15 Bionic chip.",
+    "isLike": false
+  },
+  {
+    "id": 35,
+    "idCategory": 2,
+    "idBrand": 2,
+    "name": "Samsung Galaxy Book S",
+    "price": 1099,
+    "images": [
+      { "id": 109, "link": "https://example.com/galaxy_book_s_1.jpg" },
+      { "id": 110, "link": "https://example.com/galaxy_book_s_2.jpg" }
+    ],
+    "description": "Thin and lightweight laptop with long battery life.",
+    "isLike": false
+  },
+  {
+    "id": 36,
+    "idCategory": 3,
+    "idBrand": 3,
+    "name": "Microsoft Surface Pro 8",
+    "price": 1199,
+    "images": [
+      { "id": 111, "link": "https://example.com/surface_pro8_1.jpg" },
+      { "id": 112, "link": "https://example.com/surface_pro8_2.jpg" }
+    ],
+    "description": "Versatile 2-in-1 tablet with Windows 11.",
+    "isLike": false
+  },
+  {
+    "id": 37,
+    "idCategory": 4,
+    "idBrand": 4,
+    "name": "Sony DualShock 4 Controller",
+    "price": 59,
+    "images": [
+      { "id": 113, "link": "https://example.com/dualshock4_1.jpg" },
+      { "id": 114, "link": "https://example.com/dualshock4_2.jpg" }
+    ],
+    "description": "Wireless controller for PlayStation gaming.",
+    "isLike": false
+  },
+  {
+    "id": 38,
+    "idCategory": 1,
+    "idBrand": 5,
+    "name": "Sony Xperia 10 III",
+    "price": 399,
+    "images": [
+      { "id": 115, "link": "https://example.com/xperia10iii_1.jpg" },
+      { "id": 116, "link": "https://example.com/xperia10iii_2.jpg" }
+    ],
+    "description": "Mid-range smartphone with versatile camera capabilities.",
+    "isLike": false
+  },
+  {
+    "id": 39,
+    "idCategory": 2,
+    "idBrand": 6,
+    "name": "Dell Alienware M15",
+    "price": 1999,
+    "images": [
+      { "id": 117, "link": "https://example.com/alienware_m15_1.jpg" },
+      { "id": 118, "link": "https://example.com/alienware_m15_2.jpg" }
+    ],
+    "description": "High-performance gaming laptop with Alienware design.",
+    "isLike": false
+  },
+  {
+    "id": 40,
+    "idCategory": 3,
+    "idBrand": 7,
+    "name": "HP Spectre Folio",
+    "price": 1299,
+    "images": [
+      { "id": 119, "link": "https://example.com/spectre_folio_1.jpg" },
+      { "id": 120, "link": "https://example.com/spectre_folio_2.jpg" }
+    ],
+    "description": "Premium 2-in-1 laptop with leather finish.",
+    "isLike": false
+  },
+  {
+    "id": 41,
+    "idCategory": 1,
+    "idBrand": 8,
+    "name": "HP Envy x360",
+    "price": 1099,
+    "images": [
+      {"id": 121, "link": "https://example.com/envy_x360_1.jpg"},
+      {"id": 122, "link": "https://example.com/envy_x360_2.jpg"}
+    ],
+    "description": "Convertible laptop with AMD Ryzen processor.",
+    "isLike": false
+  },
+  {
+    "id": 42,
+    "idCategory": 2,
+    "idBrand": 9,
+    "name": "Asus Chromebook Flip C434",
+    "price": 599,
+    "images": [
+      {"id": 123, "link": "https://example.com/chromebook_flip_c434_1.jpg"},
+      {"id": 124, "link": "https://example.com/chromebook_flip_c434_2.jpg"}
+    ],
+    "description": "Premium Chromebook with a versatile design.",
+    "isLike": false
+  },
+  {
+    "id": 43,
+    "idCategory": 3,
+    "idBrand": 6,
+    "name": "Dell Alienware m15 R6",
+    "price": 1499,
+    "images": [
+      {"id": 125, "link": "https://example.com/alienware_m15_r6_1.jpg"},
+      {"id": 126, "link": "https://example.com/alienware_m15_r6_2.jpg"}
+    ],
+    "description": "Gaming laptop with high-performance graphics and a sleek design.",
+    "isLike": false
+  },
+  {
+    "id": 44,
+    "idCategory": 4,
+    "idBrand": 7,
+    "name": "HP Wireless Keyboard",
+    "price": 49,
+    "images": [
+      {"id": 127, "link": "https://example.com/hp_wireless_keyboard_1.jpg"},
+      {"id": 128, "link": "https://example.com/hp_wireless_keyboard_2.jpg"}
+    ],
+    "description": "Wireless keyboard for comfortable typing.",
+    "isLike": false
+  },
+  {
+    "id": 45,
+    "idCategory": 1,
+    "idBrand": 1,
+    "name": "iPhone 14 Pro Max",
+    "price": 1299,
+    "images": [
+      {"id": 129, "link": "https://example.com/iphone14promax_1.jpg"},
+      {"id": 130, "link": "https://example.com/iphone14promax_2.jpg"}
+    ],
+    "description": "Maximized performance and camera capabilities.",
+    "isLike": false
+  },
+  {
+    "id": 46,
+    "idCategory": 2,
+    "idBrand": 2,
+    "name": "Samsung Galaxy Tab A7",
+    "price": 249,
+    "images": [
+      {"id": 131, "link": "https://example.com/galaxy_tab_a7_1.jpg"},
+      {"id": 132, "link": "https://example.com/galaxy_tab_a7_2.jpg"}
+    ],
+    "description": "Affordable Android tablet for entertainment.",
+    "isLike": false
+  },
+  {
+    "id": 47,
+    "idCategory": 3,
+    "idBrand": 3,
+    "name": "Microsoft Arc Mouse",
+    "price": 79,
+    "images": [
+      {"id": 133, "link": "https://example.com/arc_mouse_1.jpg"},
+      {"id": 134, "link": "https://example.com/arc_mouse_2.jpg"}
+    ],
+    "description": "Sleek and portable Bluetooth mouse.",
+    "isLike": false
+  },
+  {
+    "id": 48,
+    "idCategory": 4,
+    "idBrand": 4,
+    "name": "Sony WH-1000XM4 Headphones",
+    "price": 349,
+    "images": [
+      {"id": 135, "link": "https://example.com/wh1000xm4_1.jpg"},
+      {"id": 136, "link": "https://example.com/wh1000xm4_2.jpg"}
+    ],
+    "description": "High-quality noise-canceling headphones for music lovers.",
+    "isLike": false
+  },
+  {
+    "id": 49,
+    "idCategory": 1,
+    "idBrand": 5,
+    "name": "Sony Xperia 1 IV",
+    "price": 1299,
+    "images": [
+      {"id": 137, "link": "https://example.com/xperia1iv_1.jpg"},
+      {"id": 138, "link": "https://example.com/xperia1iv_2.jpg"}
+    ],
+    "description": "Flagship Android smartphone with impressive display.",
+    "isLike": false
+  },
+  {
+    "id": 50,
+    "idCategory": 2,
+    "idBrand": 6,
+    "name": "Dell Precision 15",
+    "price": 1799,
+    "images": [
+      {"id": 139, "link": "https://example.com/precision15_1.jpg"},
+      {"id": 140, "link": "https://example.com/precision15_2.jpg"}
+    ],
+    "description": "Workstation laptop for professional use.",
     "isLike": false
   }
 ]
