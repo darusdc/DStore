@@ -1,11 +1,14 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import  Icon   from 'react-native-vector-icons/EvilIcons'
 import React from 'react'
-import Colors from '../constants/Colors'
+import Colors from '../../constants/Colors'
+import { SearchBar } from '@rneui/themed'
+
+
 type arg = {
+    title: string,
     headerCustomStyle?: StyleSheet,
     isShowRightIcon?: boolean,
-    title: string,
     isWhiteTitle?: boolean,
     isStackScreen?: boolean,
     isShowLogo?: boolean
@@ -22,6 +25,9 @@ const Header = (prop: arg) => {
                     </TouchableOpacity>
                     :
                     null
+                }
+                {
+                    <SearchBar placeholder='Search for item'/>
                 }
             </View>
             <View style={{ flexDirection: "row" }}>

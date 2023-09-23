@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleProp, Text, TextStyle } from 'react-native';
 import styles from './TextStyles';
 
 type arg = {
     text : string
-    style?: [] | {}
+    style?: StyleProp<TextStyle>
 }
 
 const LargeText = (props : arg) => {

@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
-import Colors from "../constants/Colors";
+import Colors from "../../constants/Colors";
 
 
 const {width, height} = Dimensions.get('window')
@@ -10,9 +10,13 @@ const itemWidth = (width - (itemSpace * itemShowNumber + 1)) / itemShowNumber
 const itemHeight = itemWidth - (itemSpace * itemShowNumber)
 
 export const homeScreenStyles = StyleSheet.create({
-    container: {
+    container:{
+        marginBottom:10,
+        padding: 15
+    },
+    secondContainer: {
         width,
-        height:height/3+40,
+        height: height/4 + itemHeight-50,
     },
     imageBackgroundStyle: {
         width,
@@ -30,13 +34,14 @@ export const homeScreenStyles = StyleSheet.create({
         zIndex:1
     },
     weeklyProductContainer: {
-        borderWidth:1,
-        borderColor: Colors.BORDER_COLOR,
+        // borderWidth:1,
+        // borderColor: Colors.BORDER_COLOR,
         padding: 8,
         margin: 8,
         width: itemWidth,
         borderRadius:5,
         flex: 1,
-        zIndex:0
+        zIndex:0,
+        resizeMode:'contain'
     }
 })

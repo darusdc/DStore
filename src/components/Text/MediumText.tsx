@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { StyleProp, Text, TextStyle } from 'react-native';
 import styles from './TextStyles';
-import PropTypes from 'prop-types';
 
 type arg = {
     text : string
-    style?: [] | {}
+    style?: StyleProp<TextStyle>
 }
 // here is MediumText
 const MediumText = (props : arg) => {
