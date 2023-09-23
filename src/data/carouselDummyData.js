@@ -31,9 +31,5 @@ export const carouselData = [
         "tagline": "In Search of Incredible",
         "thumbnail": "https://www.asus.com/WebsitesBanner/global/banners/wyfx5qhvhqmzj3mn/wyfx5qhvhqmzj3mn-2_0_desktop_2_1X.webp",
       },
-      {
-        tagline: 'Anima Sana In Corpore Sano',
-        thumbnail: 'https://i.ibb.co/fG5p5Qw/banner-asics.jpg',
-    },
     ]
   
