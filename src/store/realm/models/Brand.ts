@@ -5,14 +5,14 @@ class Brand extends Realm.Object<Brand> {
     thumbnail: string
     isSelected: boolean
 
-    static schema = {
+    static schema : Realm.ObjectSchema = {
         name: "Brand",
         properties: {
             id: 'objectId',
             brandName: 'string',
             logo: 'string',
             thumbnail: 'string',
-            isSelected: 'bool'
+            isSelected: 'bool',
         },
         primaryKey: 'id'
     }

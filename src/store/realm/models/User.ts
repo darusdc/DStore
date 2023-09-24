@@ -1,5 +1,3 @@
-import Realm from "realm"
-
 class User extends Realm.Object<User> {
     id!: Realm.BSON.ObjectId
     fullname!: string
@@ -9,7 +7,7 @@ class User extends Realm.Object<User> {
     profileImage?: string    
     addresses!: Realm.List<Address>
     
-    static schema = {
+    static schema : Realm.ObjectSchema = {
         name : "User",
         properties: {
             id: 'objectId',

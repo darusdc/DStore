@@ -41,18 +41,19 @@ const HomeScreen = () => {
     const flatListRenderItem = ({ item }: { item: itemData }) => (
         <TouchableOpacity style={homeScreenStyles.weeklyProductContainer}>
             {/* <View  > */}
-                <Image style={homeScreenStyles.flatListItem} source={{ uri: item.images[0].link }} />
-                <View style={{ flexDirection: 'row', alignContent: 'space-between', alignItems: 'center' }}>
-                    <View style={{ flex: 1 }}>
-                        <MediumText text={`$ ${item.price.toString()}`} style={{ color: Colors.PRIMARY, fontWeight: 'bold', marginBottom: 0 }} />
-                    </View>
-                    <View style={{ flex: 1, alignItems: 'flex-end', paddingRight: 20 }}>
-                        <TouchableOpacity>
-                            <Icon name='heart' size={16} />
-                        </TouchableOpacity>
-                    </View>
+            <Image style={homeScreenStyles.flatListItem} source={{ uri: item.images[0].link }} />
+            <View style={{ flexDirection: 'row', alignContent: 'space-between', alignItems: 'center' }}>
+                <View style={{ flex: 1 }}>
+                    <MediumText text={`$ ${item.price.toString()}`} style={{ color: Colors.PRIMARY, fontWeight: 'bold', marginBottom: 0 }} />
                 </View>
+            </View>
+            <View style={{ flex:1,  flexDirection: 'column' }}>
                 <SmallText text={item.name} style={{ color: Colors.SECONDARY }} />
+                <View style={{ flex:1,  flexDirection: 'row', alignContent: 'space-between', flexWrap: 'wrap' }}>
+                    <SmallText text={item.idCategory.toString()} style={{ flex: 1, color: Colors.SECONDARY }} />
+                    <Button containerStyle={{ flex: 1, alignItems: 'flex-end', paddingRight: 20 }} iconName='heart' iconSize={16} />
+                </View>
+            </View>
 
             {/* </View> */}
         </TouchableOpacity>
@@ -60,52 +61,48 @@ const HomeScreen = () => {
     return (
         <SafeAreaView style={{}}>
             <Header title='Homepage' isShowRightIcon isSearchBarShow rightIcon='heart' />
-            <ScrollView>
-            <View style={{ ...homeScreenStyles.container }}>
-                <View style={{ flexDirection: 'row', alignContent: 'space-between' }}>
-                    <View style={{ flex: 1 }}>
-
-                        <MediumText text='Popular Item' style={{ marginLeft: 10 }} />
+            <ScrollView showsVerticalScrollIndicator>
+                <View style={{ ...homeScreenStyles.container }}>
+                    <View style={{ flexDirection: 'row', alignContent: 'space-between' }}>
+                        <View style={{ flex: 1 }}>
+                            <MediumText text='Popular Item' style={{ marginLeft: 10 }} />
+                        </View>
+                        <Button containerStyle={{ flex: 1, alignItems: 'flex-end' }} text='Show All' textStyle={{ textDecorationLine: 'underline', color: 'blue', marginRight: 10 }} />
                     </View>
-                    <Button containerStyle={{ flex: 1, alignItems: 'flex-end' }} text='Show All' textStyle={{ textDecorationLine: 'underline', color: 'blue', marginRight: 10 }} />
-                    {/* <View style={{ flex: 1, alignItems: 'flex-end' }}>
-                    <TouchableOpacity>
-                        <MediumText text='Show All' style={{ textDecorationLine: 'underline', color: 'blue', marginRight: 10 }} />
-                    </TouchableOpacity>
-                </View> */}
-                </View>
-                <View style={homeScreenStyles.secondContainer}>
+                    <View style={homeScreenStyles.secondContainer}>
+                        <FlatList
+                            horizontal
+                            data={productData.slice(0, 5)}
+                            renderItem={flatListRenderItem}
+                        />
+                        <MediumText text='Shop by Brand' />
+                    </View>
                     <FlatList
-                        horizontal
-                        data={productData.slice(0, 5)}
-                        renderItem={flatListRenderItem}
+                        data={brands}
+                        numColumns={3}
+                        scrollEnabled={false}
+                        contentContainerStyle={{ alignContent: 'space-around' }}
+                        renderItem={({ item }) => (
+                            <Button onPress={() => { console.log(item.brandName) }}
+                                text={item.brandName}
+                                containerStyle={{ ...headerStyle.button, ...headerStyle.rightButton, margin: 8, borderRadius: 5 }}
+                                textStyle={{ color: Colors.SECONDARY, paddingHorizontal: 10 }} />)}
                     />
-                    <MediumText text='Shop by Brand' />
-                </View>
-                <FlatList
-                    data={brands}
-                    numColumns={3}
-                    scrollEnabled={false}
-                    contentContainerStyle={{ alignContent: 'space-around' }}
-                    renderItem={({ item }) => (
-                        <Button onPress={() => { console.log(item.brandName) }}
-                            text={item.brandName}
-                            containerStyle={{ ...headerStyle.button, ...headerStyle.rightButton, margin: 8, borderRadius: 5 }}
-                            textStyle={{ color: Colors.SECONDARY, paddingHorizontal: 10 }} />)}
-                />
 
-                <View >
+                    <View style={headerStyle.weeklyProductContainer
+                        // { height: 450 }
+                        }>
 
-                <MediumText text="WEEKLY PRODUCT" />
-                <FlatList
-                    horizontal
-                    data={productData.slice(0, 5)}
-                    contentContainerStyle={{ padding: 0 }}
-                    renderItem={flatListRenderItem}
-                    />
+                        <MediumText text="WEEKLY PRODUCT" />
+                        <FlatList
+                            horizontal
+                            data={productData.slice(0, 5)}
+                            contentContainerStyle={{ padding: 0 }}
+                            renderItem={flatListRenderItem}
+                        />
                     </View>
-                    <MediumText text='Halo'/>
-            </View>
+                    <MediumText text='Halo' />
+                </View>
             </ScrollView>
         </SafeAreaView >
     )
