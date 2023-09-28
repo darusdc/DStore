@@ -11,6 +11,7 @@ const itemHeight = itemWidth - (itemSpace * itemShowNumber)
 
 export const homeScreenStyles = StyleSheet.create({
     container:{
+        flex: 1,
         marginBottom:10,
         padding: 15
     },
@@ -36,9 +37,9 @@ export const homeScreenStyles = StyleSheet.create({
     weeklyProductContainer: {
         // borderWidth:1,
         // borderColor: Colors.BORDER_COLOR,
-        padding: 8,
+        // padding: 8,
         margin: 8,
-        width: itemWidth,
+        // width: width,
         borderRadius:5,
         flex: 1,
         zIndex:0,

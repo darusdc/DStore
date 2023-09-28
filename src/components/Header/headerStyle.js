@@ -16,6 +16,11 @@ export const headerStyle = StyleSheet.create({
         padding: 8,
         alignItems:'center'
     },
+    textTitleContainer:{
+        verticalAlign:'middle',
+        paddingVertical: 10,
+        paddingRight: 50
+    },
     button:{
         // height:55,
         backgroundColor:'white',

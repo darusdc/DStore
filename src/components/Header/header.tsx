@@ -26,28 +26,35 @@ const Header = (props: arg) => {
         isTransparent } = props;
     return (
         <View style={headerStyle.container}>
-                {isSearchBarShow ? null :
-            <View style={headerStyle.secondContainer}>
-                    <Icon.Button name='arrow-left' onPress={() => { console.log('Icon') }} style={headerStyle.button} color={'black'} size={30} backgroundColor={'white'} />
+            {isSearchBarShow ? null :
+                <View style={headerStyle.secondContainer}>
+                    {isStackScreen ?
+                        <Icon.Button name='arrow-left' onPress={() => { console.log('Icon') }} style={headerStyle.button} color={'black'} size={30} backgroundColor={'white'} />
+                        :
+                        null}
 
-            </View>
-                }
+                </View>
+            }
+            {isSearchBarShow ?
                 <View style={headerStyle.searchBarContainer}>
-                {isSearchBarShow ?
                     <SearchBar placeholder='Search item here..'
                         inputContainerStyle={headerStyle.searchBarInnerContainer}
                         containerStyle={headerStyle.searchBarContainerStyle}
-                        />
-                        : <Text style={headerStyle.heading}>{title}</Text>}
+                    />
                 </View>
+                :
+                <View style={headerStyle.textTitleContainer}>
+                    <Text style={headerStyle.heading}>{title}</Text>
+                </View>
+            }
 
 
             <View style={headerStyle.secondContainer}>
                 {isShowRightIcon ?
-                <Button iconName={rightIcon} 
-                containerStyle={{ ...headerStyle.button, ...headerStyle.rightButton }} 
-                iconStyle={headerStyle.iconButton} 
-                />
+                    <Button iconName={rightIcon}
+                        containerStyle={{ ...headerStyle.button, ...headerStyle.rightButton }}
+                        iconStyle={headerStyle.iconButton}
+                    />
                     : null
                 }
             </View>

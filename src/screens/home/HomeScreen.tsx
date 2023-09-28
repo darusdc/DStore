@@ -47,9 +47,9 @@ const HomeScreen = () => {
                     <MediumText text={`$ ${item.price.toString()}`} style={{ color: Colors.PRIMARY, fontWeight: 'bold', marginBottom: 0 }} />
                 </View>
             </View>
-            <View style={{ flex:1,  flexDirection: 'column' }}>
+            <View style={{ flex: 1, flexDirection: 'column' }}>
                 <SmallText text={item.name} style={{ color: Colors.SECONDARY }} />
-                <View style={{ flex:1,  flexDirection: 'row', alignContent: 'space-between', flexWrap: 'wrap' }}>
+                <View style={{ flex: 1, flexDirection: 'row', alignContent: 'space-between', flexWrap: 'wrap' }}>
                     <SmallText text={item.idCategory.toString()} style={{ flex: 1, color: Colors.SECONDARY }} />
                     <Button containerStyle={{ flex: 1, alignItems: 'flex-end', paddingRight: 20 }} iconName='heart' iconSize={16} />
                 </View>
@@ -59,17 +59,17 @@ const HomeScreen = () => {
         </TouchableOpacity>
     )
     return (
-        <SafeAreaView style={{}}>
+        <SafeAreaView style={{flex: 1}}>
             <Header title='Homepage' isShowRightIcon isSearchBarShow rightIcon='heart' />
             <ScrollView showsVerticalScrollIndicator>
-                <View style={{ ...homeScreenStyles.container }}>
+                <View style={{ ...homeScreenStyles.container}}>
                     <View style={{ flexDirection: 'row', alignContent: 'space-between' }}>
                         <View style={{ flex: 1 }}>
                             <MediumText text='Popular Item' style={{ marginLeft: 10 }} />
                         </View>
                         <Button containerStyle={{ flex: 1, alignItems: 'flex-end' }} text='Show All' textStyle={{ textDecorationLine: 'underline', color: 'blue', marginRight: 10 }} />
                     </View>
-                    <View style={homeScreenStyles.secondContainer}>
+                    <View style={homeScreenStyles.weeklyProductContainer}>
                         <FlatList
                             horizontal
                             data={productData.slice(0, 5)}
@@ -89,7 +89,7 @@ const HomeScreen = () => {
                                 textStyle={{ color: Colors.SECONDARY, paddingHorizontal: 10 }} />)}
                     />
 
-                    <View style={headerStyle.weeklyProductContainer
+                    <View style={homeScreenStyles.weeklyProductContainer
                         // { height: 450 }
                         }>
 
@@ -101,7 +101,6 @@ const HomeScreen = () => {
                             renderItem={flatListRenderItem}
                         />
                     </View>
-                    <MediumText text='Halo' />
                 </View>
             </ScrollView>
         </SafeAreaView >
