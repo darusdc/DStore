@@ -14,7 +14,7 @@ const LoginScreen = () => {
         .required('Please put your email'),
         password: yup.string()
         .min(8)
-        .matches(RegExp('^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%&? "]).*$'), "Password must include lowercase, uppercase, symbol, and number")
+        .matches(RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})'), "Password must include lowercase, uppercase, symbol, and number")
     })
     return (
         <View>

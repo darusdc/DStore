@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Feather'
 import { headerStyle } from './headerStyle'
 import { SearchBar } from '@rneui/themed'
 import Button from '../Button/button'
+import { useNavigation } from '@react-navigation/native'
 
 type arg = {
     title: string,
@@ -24,12 +25,14 @@ const Header = (props: arg) => {
         isStackScreen,
         isSearchBarShow,
         isTransparent } = props;
+    
+    const navigation = useNavigation()
     return (
         <View style={headerStyle.container}>
             {isSearchBarShow ? null :
                 <View style={headerStyle.secondContainer}>
                     {isStackScreen ?
-                        <Icon.Button name='arrow-left' onPress={() => { console.log('Icon') }} style={headerStyle.button} color={'black'} size={30} backgroundColor={'white'} />
+                        <Icon.Button name='arrow-left' onPress={() => { navigation.goBack() }} style={headerStyle.button} color={'black'} size={30} backgroundColor={'white'} />
                         :
                         null}
 

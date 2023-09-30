@@ -19,6 +19,7 @@
     "expo": "~49.0.10",
     "expo-status-bar": "~1.6.0",
     "formik": "^2.4.5",
+    "lottie-react-native": "5.1.6",
     "native": "^0.3.3",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
