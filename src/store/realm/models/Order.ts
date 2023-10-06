@@ -1,5 +1,8 @@
-class Order extends Realm.Object<Order> {
-    id!: Realm.BSON.ObjectId
+import { Shipping } from "./Shipping"
+import { User } from "./User"
+
+export class Order extends Realm.Object<Order> {
+    id!: number
     idUser: User
     idShipping: Shipping
     totalPrice: number
@@ -10,7 +13,7 @@ class Order extends Realm.Object<Order> {
     static schema: Realm.ObjectSchema = {
         name: "Order",
         properties: {
-            id: 'objectId',
+            id: 'int',
             idUser: 'User',
             idShipping: 'Shipping',
             totalPrice: 'float',

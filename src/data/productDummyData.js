@@ -46,7 +46,7 @@ export const productData = [
   {
     "id": 4,
     "idCategory": 2,
-    "idBrand": 5,
+    "idBrand": 4,
     "name": "Sony VAIO Pro 13",
     "price": 1299,
     "images": [
@@ -284,7 +284,7 @@ export const productData = [
   {
     "id": 27,
     "idCategory": 3,
-    "idBrand": 5,
+    "idBrand": 4,
     "name": "Sony Xperia Tablet Z5",
     "price": 699,
     "images": [
@@ -427,7 +427,7 @@ export const productData = [
   {
     "id": 38,
     "idCategory": 1,
-    "idBrand": 5,
+    "idBrand": 4,
     "name": "Sony Xperia 10 III",
     "price": 399,
     "images": [
@@ -570,7 +570,7 @@ export const productData = [
   {
     "id": 49,
     "idCategory": 1,
-    "idBrand": 5,
+    "idBrand": 4,
     "name": "Sony Xperia 1 IV",
     "price": 1299,
     "images": [

@@ -19,7 +19,8 @@ export const headerStyle = StyleSheet.create({
     textTitleContainer:{
         verticalAlign:'middle',
         paddingVertical: 10,
-        paddingRight: 50
+        paddingRight: 50,
+        textAlign:'center',
     },
     button:{
         // height:55,

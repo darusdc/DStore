@@ -1,19 +1,21 @@
-class User extends Realm.Object<User> {
-    id!: Realm.BSON.ObjectId
+export class User extends Realm.Object<User> {
+    id!: number
     fullname!: string
     email!: string
-    phone!: string
+    phone?: string
     password!: string
+    username: string
     profileImage?: string    
     addresses!: Realm.List<Address>
     
     static schema : Realm.ObjectSchema = {
         name : "User",
         properties: {
-            id: 'objectId',
+            id: 'int',
             fullname: 'string',
             email: 'string',
             phone: 'string',
+            username: 'string',
             password: 'string',
             profileImage: 'string',
             addresses: { type: "list", objectType: "Address" },
@@ -22,7 +24,7 @@ class User extends Realm.Object<User> {
     }
 }
 
-class Address extends Realm.Object<Address>{
+export class Address extends Realm.Object<Address>{
     street!: string
     kelurahan!: string
     subDistrict!: string
@@ -40,4 +42,17 @@ class Address extends Realm.Object<Address>{
             province: 'string'
         },
     }
+}
+
+export class UserLoginId extends Realm.Object<UserLoginId>{
+    userId!: number 
+    
+    static schema = {
+        name: "UserLoginId",
+        properties: {
+            userId: 'int'
+        },
+        primaryKey: 'userId'
+    }
+
 }

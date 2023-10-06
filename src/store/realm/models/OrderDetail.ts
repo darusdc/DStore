@@ -1,5 +1,9 @@
-class OrderDetail extends Realm.Object<OrderDetail> {
-    id!: Realm.BSON.ObjectId
+import { Order } from "./Order"
+import { Product } from "./Product"
+import { InternalStorage, RamCapacity } from "./Size"
+
+export class OrderDetail extends Realm.Object<OrderDetail> {
+    id!: number
     idOrder: Order
     idProduct: Product
     idInternalStorage?: InternalStorage
@@ -9,7 +13,7 @@ class OrderDetail extends Realm.Object<OrderDetail> {
     static schema : Realm.ObjectSchema = {
         name: "OrderDetail",
         properties: {
-            id: 'objectId',
+            id: 'int',
             idOrder: 'Order',
             idProduct: 'Product',
             idInternalStorage: 'InternalStorage?',

@@ -1,6 +1,6 @@
 import { View, Text, TextInput, ViewStyle, StyleProp, TextStyle, NativeSyntheticEvent, TextInputFocusEventData, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { SmallText } from '../Text'
+import { MediumText, SmallText } from '../Text'
 import Colors from '../../constants/Colors'
 import { Icon } from '@rneui/themed'
 
@@ -25,7 +25,7 @@ const FormComponent = (props: arg) => {
     return (
         <View style={[containerStyle]}>
             <View style={{ flexDirection: 'row' }}>
-                <SmallText text={title} />
+                <MediumText text={title} />
                 {required ? <SmallText text=' *' style={{ color: 'red' }} /> : null}
             </View>
 

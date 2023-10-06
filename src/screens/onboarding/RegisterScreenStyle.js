@@ -7,5 +7,5 @@ marginHorizontal:10 },
     checkboxContainer:{ alignContent:'center', marginLeft: 10},
     textUnderline: { textDecorationLine: 'underline' },
     tncContainer: { flexDirection: 'row', alignItems:'center', width, marginBottom:20},
-    tncText:{ paddingRight: 50, marginRight:20}
+    tncText:{ fontFamily:'Inter_400Reguler', paddingRight: 50, marginRight:20}
 })

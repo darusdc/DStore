@@ -1,5 +1,5 @@
-class InternalStorage extends Realm.Object<InternalStorage> {
-    id!: Realm.BSON.ObjectId
+export class InternalStorage extends Realm.Object<InternalStorage> {
+    id!: number
     size!: string
     priceMultiplier!: number
     isSelected?: boolean
@@ -7,7 +7,7 @@ class InternalStorage extends Realm.Object<InternalStorage> {
     static schema = {
         name: 'InternalStorage',
         properties: {
-            id: 'objectId',
+            id: 'int',
             size: 'string',
             priceMultiplier: 'float',
             isSelected: 'bool'
@@ -16,8 +16,8 @@ class InternalStorage extends Realm.Object<InternalStorage> {
     }
 }
 
-class RamCapacity extends Realm.Object<RamCapacity> {
-    id!: Realm.BSON.ObjectId
+export class RamCapacity extends Realm.Object<RamCapacity> {
+    id!: number
     size!: string
     priceMultiplier!: number
     isSelected?: boolean
@@ -25,7 +25,7 @@ class RamCapacity extends Realm.Object<RamCapacity> {
     static schema = {
         name: 'RamCapacity',
         properties: {
-            id: 'objectId',
+            id: 'int',
             size: 'string',
             priceMultiplier: 'float',
             isSelected: 'bool'

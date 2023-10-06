@@ -1,5 +1,5 @@
-class Category extends Realm.Object<Category> {
-    id!: Realm.BSON.ObjectId
+export class Category extends Realm.Object<Category> {
+    id!: number
     techCategory!: string
     thumbnail: string
     isSelected?: boolean
@@ -7,7 +7,7 @@ class Category extends Realm.Object<Category> {
     static schema = {
         name: 'Category',
         properties: {
-            id: 'objectId',
+            id: 'int',
             techCategory: 'string',
             thumbnail: 'string',
             isSelected: 'bool'

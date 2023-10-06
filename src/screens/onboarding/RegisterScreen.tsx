@@ -10,7 +10,22 @@ import Button from '../../components/Button/button'
 import { registerStyles } from './RegisterScreenStyle'
 import { CheckBox } from '@rneui/themed'
 import { ScrollView } from 'react-native'
+import { useDispatch } from 'react-redux'
+import { addUserLoginId } from '../../store/redux/action/UserLoginIdAction'
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigation } from '../../navigation/MainNavigation'
+import { realm } from '../../store/realm'
+import { User } from '../../store/realm/models/User'
+
+type form = {
+    fullname: string
+    email: string
+    password: string
+    username: string
+}
 const RegisterScreen = () => {
+    const navigation = useNavigation<StackNavigation>()
+    const dispatch = useDispatch()
     const signUpFormValidation = yup.object().shape({
         email: yup.string()
             .email('Please input validated email address')
@@ -20,8 +35,51 @@ const RegisterScreen = () => {
             .min(8)
             .matches(RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})"), "Password must include lowercase, uppercase, symbol, and number"),
         passwordConfirmation: yup.string().oneOf([yup.ref('password')], "your password is different").required("Please input your password again"),
-        isAgree: yup.bool().required('you need to agree')
+        isAgree: yup.bool().oneOf([true]).required('you need to agree')
     })
+
+    const onClickRegister = (data: form) => {
+        const allUser = realm.objects<User>("User")
+        const userAmount = allUser.length
+        let isAlreadyRegistered = false
+
+        if (userAmount !== 0) {
+            const isEmailExist = allUser.some((item) => item.email === data.email)
+            if (isEmailExist) {
+                alert("Email has already been taken!")
+                isAlreadyRegistered = true
+            }
+        }
+
+        if (!isAlreadyRegistered) {
+            const newUserId = userAmount + 1
+            realm.write(() => {
+                realm.create('User', {
+                    id: newUserId,
+                    fullname: data.fullname,
+                    email: data.email,
+                    password: data.password,
+                    username: data.username,
+                    phone: '',
+                    profileImage: '',
+                    addresses: [{
+                        street: '',
+                        kelurahan: '',
+                        subDistrict: '',
+                        city: '',
+                        province: ''
+                    }]
+                });
+                realm.create('UserLoginId', {
+                    userId: newUserId
+                });
+            })
+            dispatch(addUserLoginId(newUserId))
+            alert('Successfully registered!')
+            navigation.navigate('RegisterSuccess')
+        }
+    }
+
     return (
         <View style={{ flex: 1 }}>
             <Header title='Sign Up' isStackScreen />
@@ -33,7 +91,7 @@ const RegisterScreen = () => {
                 passwordConfirmation: '',
                 isAgree: false
             }}
-                onSubmit={(data) => { console.log(data) }}
+                onSubmit={(data) => onClickRegister(data)}
                 validationSchema={signUpFormValidation}
             >
                 {({
@@ -132,14 +190,14 @@ const RegisterScreen = () => {
                                 <CheckBox style={registerStyles.checkboxContainer} checked={values.isAgree} onPress={() => setFieldValue('isAgree', !values.isAgree)} />
                                 <Text style={registerStyles.tncText}>By clicking sign up, I hereby agree and consent to {' '}
                                     <Text
-                                        style={[registerStyles.textUnderline, WelcomeScreenStyle.primaryTextButton]}
+                                        style={[registerStyles.textUnderline, WelcomeScreenStyle.secondaryTextButton]}
                                         onPress={() => Linking.openURL('https://wikidiff.com/agreement/term')}
                                     >
                                         Term & Condition</Text>
                                     ; I confirm that I have read {' '}
 
                                     <Text
-                                        style={[registerStyles.textUnderline, WelcomeScreenStyle.primaryTextButton]}
+                                        style={[registerStyles.textUnderline, WelcomeScreenStyle.secondaryTextButton]}
                                         onPress={() => Linking.openURL('https://en.wikipedia.org/wiki/Privacy_policy')}
                                     >
                                         Privacy & Policy'</Text>
@@ -154,8 +212,8 @@ const RegisterScreen = () => {
                                 }
                             </View>
                             <Button text='Submit'
-                                containerStyle={WelcomeScreenStyle.signUpButtonContainer}
-                                textStyle={WelcomeScreenStyle.whiteTextButton}
+                                containerStyle={WelcomeScreenStyle.primaryButtonContainer}
+                                textStyle={WelcomeScreenStyle.primaryTextButton}
                                 onPress={() => handleSubmit()}
                             />
                         </View>

@@ -7,7 +7,7 @@ import Button from '../Button/button'
 import { useNavigation } from '@react-navigation/native'
 
 type arg = {
-    title: string,
+    title?: string,
     /**
      * The icon will shown up on the right side your header
      * <Header rightIcon='heart'/>
@@ -25,7 +25,7 @@ const Header = (props: arg) => {
         isStackScreen,
         isSearchBarShow,
         isTransparent } = props;
-    
+
     const navigation = useNavigation()
     return (
         <View style={headerStyle.container}>
@@ -38,7 +38,7 @@ const Header = (props: arg) => {
 
                 </View>
             }
-            {isSearchBarShow ?
+            {isSearchBarShow && title != "" ?
                 <View style={headerStyle.searchBarContainer}>
                     <SearchBar placeholder='Search item here..'
                         inputContainerStyle={headerStyle.searchBarInnerContainer}

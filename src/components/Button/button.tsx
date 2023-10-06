@@ -19,8 +19,8 @@ const Button = (props : arg) => {
     return (
         <View style={containerStyle}>
             <TouchableOpacity onPress={onPress}>
-                {iconName?<Icon name={iconName} size={iconSize|24} color={iconColor} style={iconStyle}/>:null}
-                <MediumText text={text||""} style={textStyle} />
+                {iconName?<Icon name={iconName} size={iconSize||24} color={iconColor} style={iconStyle}/>:null}
+                {text==="" ? null: <MediumText text={text||""} style={textStyle} />}
             </TouchableOpacity>
         </View>
     )

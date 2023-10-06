@@ -21,9 +21,9 @@ export const brands = [
         "isSelected": false
       },
       {
-        "id": 5,
+        "id": 4,
         "brandName": "Sony",
-        "logo": "https://sony.scene7.com/is/content/sonyglobalsolutions/sony-logo?$S7Product$",
+        "logo": "https://logos-world.net/wp-content/uploads/2020/04/Sony-Logo-1962-1969.png",
         "thumbnail": "https://sony.scene7.com/is/image/sonyglobalsolutions/Primary_image_black?$whatshotimage$&fmt=png-alpha",
         "isSelected": false
       },

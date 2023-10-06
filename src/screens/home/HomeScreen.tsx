@@ -1,32 +1,47 @@
 import { FlatList, Image, SafeAreaView, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../../components/Header/header'
 import Colors from '../../constants/Colors'
 import { LargeText, MediumText, SmallText } from '../../components/Text'
 import { homeScreenStyles } from './HomeScreenStyle'
 import { productData } from '../../data/productDummyData'
 import { ScrollView } from 'react-native'
-import Icon from 'react-native-vector-icons/Feather'
 import Button from '../../components/Button/button'
 import { brands } from '../../data/brandDummyData'
 import { headerStyle } from '../../components/Header/headerStyle'
+import { insertDummyData } from '../../utils/insertDummyData'
+import { categoryData } from '../../data/categoryDummyData'
+import { shippingData } from '../../data/shippingDummyData'
+import { internalStorage, ramCapacity } from '../../data/sizeDummyData'
+import { realm } from '../../store/realm'
+import Product from '../../components/Product/Product'
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigation } from '../../navigation/MainNavigation'
+
+type itemData = {
+    id: number
+    idCategory: number
+    idBrand: number
+    name: string
+    price: number
+    images: { id: number; link: string; }[]
+    description: string; isLike: boolean; likeNumbers?: number
+}
+
+type itemBannerData = {
+    thumbnail: string,
+    tagline: string
+}
+
 const HomeScreen = () => {
-
-    type itemData = {
-        id: number
-        idCategory: number
-        idBrand: number
-        name: string
-        price: number
-        images: { id: number; link: string; }[]
-        description: string; isLike: boolean;
+    const navigation = useNavigation<StackNavigation>()
+    const [products, setProducts] = useState([])
+    const collectData = () => {
+        const products = realm.objects('Product')
+        const maxIndex = Math.random() * (products.length - 4)
+        
+        setProducts(products.slice(maxIndex - 4, maxIndex))
     }
-
-    type itemBannerData = {
-        thumbnail: string,
-        tagline: string
-    }
-
     const swiperFlatListRenderItem = ({ item }: { item: itemBannerData }) => (
         <View style={homeScreenStyles.container}>
             <Image
@@ -39,43 +54,36 @@ const HomeScreen = () => {
     )
 
     const flatListRenderItem = ({ item }: { item: itemData }) => (
-        <TouchableOpacity style={homeScreenStyles.weeklyProductContainer}>
-            {/* <View  > */}
-            <Image style={homeScreenStyles.flatListItem} source={{ uri: item.images[0].link }} />
-            <View style={{ flexDirection: 'row', alignContent: 'space-between', alignItems: 'center' }}>
-                <View style={{ flex: 1 }}>
-                    <MediumText text={`$ ${item.price.toString()}`} style={{ color: Colors.PRIMARY, fontWeight: 'bold', marginBottom: 0 }} />
-                </View>
-            </View>
-            <View style={{ flex: 1, flexDirection: 'column' }}>
-                <SmallText text={item.name} style={{ color: Colors.SECONDARY }} />
-                <View style={{ flex: 1, flexDirection: 'row', alignContent: 'space-between', flexWrap: 'wrap' }}>
-                    <SmallText text={item.idCategory.toString()} style={{ flex: 1, color: Colors.SECONDARY }} />
-                    <Button containerStyle={{ flex: 1, alignItems: 'flex-end', paddingRight: 20 }} iconName='heart' iconSize={16} />
-                </View>
-            </View>
-
-            {/* </View> */}
-        </TouchableOpacity>
+        <Product item={item}/>
     )
+
+    useEffect(() => {
+        insertDummyData('Brand', brands)
+        insertDummyData('Category', categoryData)
+        insertDummyData('Product', productData)
+        insertDummyData('Shipping', shippingData)
+        insertDummyData('InternalStorage', internalStorage)
+        insertDummyData('RamCapacity', ramCapacity)
+        collectData()
+    },[])
     return (
-        <SafeAreaView style={{flex: 1}}>
+        <SafeAreaView style={{ flex: 1 }}>
             <Header title='Homepage' isShowRightIcon isSearchBarShow rightIcon='heart' />
             <ScrollView showsVerticalScrollIndicator>
-                <View style={{ ...homeScreenStyles.container}}>
-                    <View style={{ flexDirection: 'row', alignContent: 'space-between' }}>
+                <View style={{ ...homeScreenStyles.container }}>
+                    <View style={homeScreenStyles.containerRowSpaceBetween}>
                         <View style={{ flex: 1 }}>
-                            <MediumText text='Popular Item' style={{ marginLeft: 10 }} />
+                            <MediumText text='Popular Item' style={{ fontFamily:'Inter_500Medium', marginLeft: 10, fontWeight: 'bold' }} />
                         </View>
-                        <Button containerStyle={{ flex: 1, alignItems: 'flex-end' }} text='Show All' textStyle={{ textDecorationLine: 'underline', color: 'blue', marginRight: 10 }} />
+                        <Button containerStyle={{ flex: 1, alignItems: 'flex-end' }} text='Show All' textStyle={{fontFamily:'Inter_500Medium', textDecorationLine: 'underline', color: 'blue', marginRight: 10 }} />
                     </View>
                     <View style={homeScreenStyles.weeklyProductContainer}>
                         <FlatList
                             horizontal
-                            data={productData.slice(0, 5)}
+                            data={products}
                             renderItem={flatListRenderItem}
                         />
-                        <MediumText text='Shop by Brand' />
+                        <MediumText text='Shop by Brand' style={{fontWeight:'bold', fontFamily:'Inter_500Medium'}}/>
                     </View>
                     <FlatList
                         data={brands}
@@ -83,20 +91,20 @@ const HomeScreen = () => {
                         scrollEnabled={false}
                         contentContainerStyle={{ alignContent: 'space-around' }}
                         renderItem={({ item }) => (
-                            <Button onPress={() => { console.log(item.brandName) }}
+                            <Button onPress={() => { navigation.navigate('Brand', {brandId: item.id, title: item.brandName}) }}
                                 text={item.brandName}
                                 containerStyle={{ ...headerStyle.button, ...headerStyle.rightButton, margin: 8, borderRadius: 5 }}
-                                textStyle={{ color: Colors.SECONDARY, paddingHorizontal: 10 }} />)}
+                                textStyle={{fontFamily:'Inter_500Medium', color: Colors.SECONDARY, paddingHorizontal: 10 }} />)}
                     />
 
-                    <View style={homeScreenStyles.weeklyProductContainer
-                        // { height: 450 }
-                        }>
+                    <View
+                        style={homeScreenStyles.weeklyProductContainer}
+                    >
 
-                        <MediumText text="WEEKLY PRODUCT" />
+                        <MediumText text="NEW PRODUCT" style={{fontFamily:'Inter_500Medium',fontWeight:'bold'}}/>
                         <FlatList
                             horizontal
-                            data={productData.slice(0, 5)}
+                            data={productData.slice(Math.random()*5, Math.random()*40)}
                             contentContainerStyle={{ padding: 0 }}
                             renderItem={flatListRenderItem}
                         />

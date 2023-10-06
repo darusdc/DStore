@@ -1,33 +1,42 @@
 import { Dimensions, StyleSheet } from "react-native";
 import Colors from "../../constants/Colors";
+
+
 const { width, height } = Dimensions.get('screen')
+
+const maxHeight = 50
 
 export const WelcomeScreenStyle = StyleSheet.create({
     image: {
         width: width / 3 - 10,
-        height: height / 3 - 50,
+        height: height / 3 - (maxHeight * Math.random()),
         resizeMode: 'cover',
         marginBottom: 5
     },
-    signUpButtonContainer: {
+    primaryButtonContainer: {
         backgroundColor: Colors.PRIMARY,
-        borderRadius: 5,
-        width: width - 10
+        borderWidth: 1,
+        borderColor: 'white',
+        width: width - 10,
+        borderRadius: 10,
+        marginVertical: 5
     },
-    whiteTextButton: {
+    primaryTextButton: {
         color: 'white',
         textAlign: 'center'
     },
-    accountButtonContainer: {
+    secondaryButtonContainer: {
         backgroundColor: 'white',
         borderColor: Colors.PRIMARY,
         borderWidth: 1,
         width: width - 10,
         borderRadius: 10,
-        marginVertical: 10
+        marginVertical: 5
     },
-    primaryTextButton: {
-        color:Colors.PRIMARY, 
-        textAlign:'center'
-    }
+    secondaryTextButton: {
+        color: Colors.PRIMARY,
+        textAlign: 'center'
+    },
+    staggerFirstContainer: { flex: 1, paddingTop: 30, marginHorizontal: 10 },
+    captionText: { textAlign: 'center', fontSize:28, fontFamily: 'Syne_500Medium' }
 })

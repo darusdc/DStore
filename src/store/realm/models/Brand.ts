@@ -1,5 +1,5 @@
-class Brand extends Realm.Object<Brand> {
-    id!: Realm.BSON.ObjectId
+export class Brand extends Realm.Object<Brand> {
+    id!: number
     brandName: string
     logo: string
     thumbnail: string
@@ -8,7 +8,7 @@ class Brand extends Realm.Object<Brand> {
     static schema : Realm.ObjectSchema = {
         name: "Brand",
         properties: {
-            id: 'objectId',
+            id: 'int',
             brandName: 'string',
             logo: 'string',
             thumbnail: 'string',

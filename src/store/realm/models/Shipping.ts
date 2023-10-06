@@ -1,5 +1,5 @@
-class Shipping extends Realm.Object<Shipping> {
-    id!: Realm.BSON.ObjectId
+export class Shipping extends Realm.Object<Shipping> {
+    id!: number
     shippingName!: string
     terms!: string
     deliveryFee!: number
@@ -8,10 +8,10 @@ class Shipping extends Realm.Object<Shipping> {
     static schema = {
         name: 'Shipping',
         properties:{
-            id: 'objectId',
+            id: 'int',
             shippingName: 'string',
             terms: 'string',
-            deliveryFee: 'int',
+            deliveryFee: 'double',
             isSelected: 'bool'
         },
         primaryKey: 'id'

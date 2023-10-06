@@ -7,15 +7,50 @@ import { SmallText } from '../../components/Text'
 import FormComponent from '../../components/Form/FormComponent'
 import Button from '../../components/Button/button'
 import { WelcomeScreenStyle } from './WelcomeScreenStyle'
+import { useDispatch } from 'react-redux'
+import { addUserLoginId } from '../../store/redux/action/UserLoginIdAction'
+import { CommonActions, useNavigation } from '@react-navigation/native'
+import { StackNavigation } from '../../navigation/MainNavigation'
+import { realm } from '../../store/realm'
+import { User } from '../../store/realm/models/User'
 const LoginScreen = () => {
+    const dispatch = useDispatch()
+    const navigation = useNavigation<StackNavigation>()
     const loginFormValidation = yup.object().shape({
         email: yup.string()
-        .email('Please input validated email address')
-        .required('Please put your email'),
+            .email('Please input validated email address')
+            .required('Please put your email'),
         password: yup.string()
-        .min(8)
-        .matches(RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})'), "Password must include lowercase, uppercase, symbol, and number")
+            .min(8)
+            .matches(RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})'), "Password must include lowercase, uppercase, symbol, and number")
     })
+
+    const onClickLogin = (data: { email: string, password: string }) => {
+        const userAccount = realm.objects<User>("User").find((item) => item.email === data.email)
+
+        if (userAccount) {
+            if (userAccount.password === data.password) {
+                realm.write(() => {
+                    realm.create('UserLoginId', {
+                        userId: userAccount.id
+                    })
+
+                })
+                dispatch(addUserLoginId(userAccount.id))
+                console.log(userAccount.id)
+                navigation.dispatch(CommonActions.reset(
+                    {
+                        index: 1,
+                        routes: [{ name: 'HomeTab' }]
+                    }
+                ))
+            } else {
+                alert('password incorrect')
+            }
+        } else {
+            alert('email not found')
+        }
+    }
     return (
         <View>
             <Header title='Login' isStackScreen />
@@ -23,7 +58,7 @@ const LoginScreen = () => {
                 email: '',
                 password: ''
             }}
-                onSubmit={(data) => { console.log(data) }}
+                onSubmit={(data) => onClickLogin(data)}
                 validationSchema={loginFormValidation}
             >
                 {({
@@ -58,18 +93,18 @@ const LoginScreen = () => {
                             onChangeText={handleChange('password')}
                             containerStyle={{ marginTop: 10 }} />
 
-{errors.password && touched.password ?
-                                <SmallText
-                                    text={errors.password}
-                                    style={{ color: 'red', marginTop: 10 }}
-                                />
-                                :
-                                null
-                            }
+                        {errors.password && touched.password ?
+                            <SmallText
+                                text={errors.password}
+                                style={{ color: 'red', marginTop: 10 }}
+                            />
+                            :
+                            null
+                        }
                         <View style={{ alignItems: 'center', marginTop: 20 }}>
                             <Button text='Login'
-                                containerStyle={WelcomeScreenStyle.signUpButtonContainer}
-                                textStyle={WelcomeScreenStyle.whiteTextButton}
+                                containerStyle={WelcomeScreenStyle.primaryButtonContainer}
+                                textStyle={WelcomeScreenStyle.primaryTextButton}
                                 onPress={() => handleSubmit()}
                             />
                         </View>
