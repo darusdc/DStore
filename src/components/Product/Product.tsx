@@ -55,7 +55,7 @@ const Product = ({item} : {item : itemData}) => {
           ]}
         >
           <SmallText
-            text={category[0].techCategory}
+            text={category[0]?.techCategory}
             style={{ flex: 1, color: Colors.SECONDARY }}
           />
           <Button
