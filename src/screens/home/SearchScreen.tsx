@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { homeScreenStyles } from './HomeScreenStyle'
 import Header from '../../components/Header/header'
 import { realm } from '../../store/realm'
-import Product from '../../components/Product/Product'
+import ProductComp from '../../components/Product/Product'
 
 const SearchScreen = () => {
   const [products, setProducts] = useState([])
@@ -29,7 +29,7 @@ const SearchScreen = () => {
           data={products}
           renderItem={({ item }) => (
 
-            <Product item={item} />
+            <ProductComp item={item} />
           )
           }
         />

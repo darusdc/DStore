@@ -98,11 +98,13 @@ const ProductDetailScreen = () => {
         <View style={{ flex: 1, flexDirection: 'row' }}>
 
           <Button iconName='arrow-left' iconColor={Colors.BLACK}
+          type='feather'
             containerStyle={productDetailScreenStyles.backButton}
             iconStyle={productDetailScreenStyles.iconRound}
             onPress={()=> {navigation.goBack()}}
           />
           <Button iconName='heart' iconColor={Colors.BLACK}
+          type='feather'
             containerStyle={productDetailScreenStyles.loveButton}
             iconStyle={productDetailScreenStyles.iconRound} />
         </View>

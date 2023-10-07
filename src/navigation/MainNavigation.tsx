@@ -22,8 +22,23 @@ import Screen from '../screens/onboarding/Screen'
 import BrandScreen from '../screens/home/BrandScreen'
 import ProductDetailScreen from '../screens/home/ProductDetailScreen'
 import { UserLoginId } from '../store/realm/models/User'
+import EditProfileScreen from '../screens/profile/EditProfileScreen'
+import ChangePasswordScreen from '../screens/profile/ChangePasswordScreen'
+import HistoryTransactionScreen from '../screens/profile/HistoryTransactionScreen'
 
-export type ScreenNames = ["Welcome", "Login", "Register", "RegisterSuccess", "HomeTab", 'Search', "Brand", 'ProductDetail'] // type these manually
+export type ScreenNames = [
+  "Welcome", 
+  "Login", 
+  "Register", 
+  "RegisterSuccess", 
+  "HomeTab", 
+  'Search', 
+  "Brand", 
+  'ProductDetail', 
+  'EditProfile',
+  'ChangePassword',
+  'HistoryTransaction'
+] // type these manually
 export type RootStackParamList = Record<ScreenNames[number], undefined | {brandId: number} | {productId: number} | {title: string} | {userId: number}>
 export type StackNavigation = NavigationProp<RootStackParamList>;
 
@@ -92,6 +107,9 @@ const StackNav = (props: screenTrans) => {
       <Stack.Screen name='Search' initialParams={{ keyword: '', brand: '' }} component={SearchScreen} />
       <Stack.Screen name='Brand' initialParams={{ keyword: '', brand: '' }} component={BrandScreen} />
       <Stack.Screen name='ProductDetail' initialParams={{ brand: '' }} component={ProductDetailScreen} />
+      <Stack.Screen name='EditProfile' initialParams={{ userId: '' }} component={EditProfileScreen} />
+      <Stack.Screen name='ChangePassword' initialParams={{ userId: '' }} component={ChangePasswordScreen} />
+      <Stack.Screen name='HistoryTransaction' initialParams={{ userId: '' }} component={HistoryTransactionScreen} />
     </Stack.Navigator>
   )
 }

@@ -8,7 +8,7 @@ import { Product, ProductImage } from "./models/Product";
 import { Shipping } from "./models/Shipping";
 import { InternalStorage, RamCapacity } from "./models/Size";
 import { FavoriteProduct } from "./models/FavoriteProduct";
-
+import { Cart } from './models/Cart'
 const realmConfig : Realm.Configuration = {
   schema: [
     Brand,
@@ -23,7 +23,8 @@ const realmConfig : Realm.Configuration = {
     Shipping,
     InternalStorage,
     RamCapacity,
-    FavoriteProduct
+    FavoriteProduct,
+    Cart
   ],
   deleteRealmIfMigrationNeeded: true,
 };

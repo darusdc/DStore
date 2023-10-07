@@ -59,5 +59,7 @@ export const homeScreenStyles = StyleSheet.create({
          alignContent: 'center', 
          marginRight: 5, 
          paddingTop: 10
-    }
+    },
+    showAllText: {fontFamily:'Inter_500Medium', textDecorationLine: 'underline', color: 'blue', marginRight: 10 },
+    headerText: { fontFamily:'Inter_500Medium', fontWeight: 'bold' }
 })

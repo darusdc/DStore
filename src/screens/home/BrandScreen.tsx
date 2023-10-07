@@ -2,10 +2,10 @@ import { View, Text, FlatList } from 'react-native'
 import React, { useCallback, useState } from 'react'
 import Header from '../../components/Header/header'
 import { realm } from '../../store/realm'
-import Product from '../../components/Product/Product'
 import { RouteProp, useFocusEffect, useRoute } from '@react-navigation/native'
 import { headerStyle } from '../../components/Header/headerStyle'
 import { SearchBar } from '@rneui/themed'
+import ProductComp from '../../components/Product/Product'
 
 
 const BrandScreen = () => {
@@ -41,7 +41,7 @@ const BrandScreen = () => {
                     data={products}
                     renderItem={({ item }) => (
 
-                        <Product item={item} />
+                        <ProductComp item={item} />
                     )
                     }
                 />

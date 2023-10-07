@@ -1,7 +1,7 @@
 export class FavoriteProduct extends Realm.Object<FavoriteProduct> {
   id!: number;
   idUser: number;
-  idProducts: [];
+  idProducts: Realm.Set<number>;
 
   static schema: Realm.ObjectSchema = {
     name: "FavoriteProduct",

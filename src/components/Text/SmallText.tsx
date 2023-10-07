@@ -3,7 +3,7 @@ import { StyleProp, Text, TextStyle } from 'react-native';
 import styles from './TextStyles';
 
 type arg = {
-    text : string
+    text : string | string []
     style?: StyleProp<TextStyle>
 }
 const SmallText = (props : arg) => {

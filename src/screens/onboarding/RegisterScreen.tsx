@@ -35,7 +35,7 @@ const RegisterScreen = () => {
             .min(8)
             .matches(RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})"), "Password must include lowercase, uppercase, symbol, and number"),
         passwordConfirmation: yup.string().oneOf([yup.ref('password')], "your password is different").required("Please input your password again"),
-        isAgree: yup.bool().oneOf([true]).required('you need to agree')
+        isAgree: yup.boolean().oneOf([true], 'you need to agree').required('you need to agree')
     })
 
     const onClickRegister = (data: form) => {
@@ -75,7 +75,6 @@ const RegisterScreen = () => {
                 });
             })
             dispatch(addUserLoginId(newUserId))
-            alert('Successfully registered!')
             navigation.navigate('RegisterSuccess')
         }
     }
@@ -201,15 +200,16 @@ const RegisterScreen = () => {
                                         onPress={() => Linking.openURL('https://en.wikipedia.org/wiki/Privacy_policy')}
                                     >
                                         Privacy & Policy'</Text>
-                                </Text>
-                                {errors.isAgree && touched.isAgree ?
+                                        {errors.isAgree && touched.isAgree ?
                                     <SmallText
-                                        text={errors.isAgree}
+                                        text={`\n * ${errors.isAgree}`}
                                         style={registerStyles.errorMessage}
                                     />
                                     :
                                     null
                                 }
+                                </Text>
+                                
                             </View>
                             <Button text='Submit'
                                 containerStyle={WelcomeScreenStyle.primaryButtonContainer}

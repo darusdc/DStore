@@ -14,9 +14,9 @@ import { categoryData } from '../../data/categoryDummyData'
 import { shippingData } from '../../data/shippingDummyData'
 import { internalStorage, ramCapacity } from '../../data/sizeDummyData'
 import { realm } from '../../store/realm'
-import Product from '../../components/Product/Product'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigation } from '../../navigation/MainNavigation'
+import ProductComp from '../../components/Product/Product'
 
 type itemData = {
     id: number
@@ -39,7 +39,7 @@ const HomeScreen = () => {
     const collectData = () => {
         const products = realm.objects('Product')
         const maxIndex = Math.random() * (products.length - 4)
-        
+
         setProducts(products.slice(maxIndex - 4, maxIndex))
     }
     const swiperFlatListRenderItem = ({ item }: { item: itemBannerData }) => (
@@ -54,7 +54,7 @@ const HomeScreen = () => {
     )
 
     const flatListRenderItem = ({ item }: { item: itemData }) => (
-        <Product item={item}/>
+        <ProductComp item={item} />
     )
 
     useEffect(() => {
@@ -65,7 +65,7 @@ const HomeScreen = () => {
         insertDummyData('InternalStorage', internalStorage)
         insertDummyData('RamCapacity', ramCapacity)
         collectData()
-    },[])
+    }, [])
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <Header title='Homepage' isShowRightIcon isSearchBarShow rightIcon='heart' />
@@ -73,9 +73,12 @@ const HomeScreen = () => {
                 <View style={{ ...homeScreenStyles.container }}>
                     <View style={homeScreenStyles.containerRowSpaceBetween}>
                         <View style={{ flex: 1 }}>
-                            <MediumText text='Popular Item' style={{ fontFamily:'Inter_500Medium', marginLeft: 10, fontWeight: 'bold' }} />
+                            <MediumText text='Popular Item' style={homeScreenStyles.headerText} />
                         </View>
-                        <Button containerStyle={{ flex: 1, alignItems: 'flex-end' }} text='Show All' textStyle={{fontFamily:'Inter_500Medium', textDecorationLine: 'underline', color: 'blue', marginRight: 10 }} />
+                        <Button
+                            containerStyle={{ flex: 1, alignItems: 'flex-end' }}
+                            text='Show All'
+                            textStyle={homeScreenStyles.showAllText} />
                     </View>
                     <View style={homeScreenStyles.weeklyProductContainer}>
                         <FlatList
@@ -83,7 +86,7 @@ const HomeScreen = () => {
                             data={products}
                             renderItem={flatListRenderItem}
                         />
-                        <MediumText text='Shop by Brand' style={{fontWeight:'bold', fontFamily:'Inter_500Medium'}}/>
+                        <MediumText text='Shop by Brand' style={homeScreenStyles.headerText} />
                     </View>
                     <FlatList
                         data={brands}
@@ -91,20 +94,25 @@ const HomeScreen = () => {
                         scrollEnabled={false}
                         contentContainerStyle={{ alignContent: 'space-around' }}
                         renderItem={({ item }) => (
-                            <Button onPress={() => { navigation.navigate('Brand', {brandId: item.id, title: item.brandName}) }}
+                            <Button onPress={() => { navigation.navigate('Brand', { brandId: item.id, title: item.brandName }) }}
                                 text={item.brandName}
                                 containerStyle={{ ...headerStyle.button, ...headerStyle.rightButton, margin: 8, borderRadius: 5 }}
-                                textStyle={{fontFamily:'Inter_500Medium', color: Colors.SECONDARY, paddingHorizontal: 10 }} />)}
+                                textStyle={{ fontFamily: 'Inter_500Medium', color: Colors.SECONDARY, paddingHorizontal: 10 }} />)}
                     />
 
                     <View
                         style={homeScreenStyles.weeklyProductContainer}
                     >
-
-                        <MediumText text="NEW PRODUCT" style={{fontFamily:'Inter_500Medium',fontWeight:'bold'}}/>
+                        <View style={homeScreenStyles.containerRowSpaceBetween}>
+                            <MediumText text="New Product" style={homeScreenStyles.headerText} />
+                            <Button
+                                containerStyle={{ flex: 1, alignItems: 'flex-end' }}
+                                text='Show All'
+                                textStyle={homeScreenStyles.showAllText} />
+                        </View>
                         <FlatList
                             horizontal
-                            data={productData.slice(Math.random()*5, Math.random()*40)}
+                            data={productData.slice(Math.random() * 5, Math.random() * 40)}
                             contentContainerStyle={{ padding: 0 }}
                             renderItem={flatListRenderItem}
                         />

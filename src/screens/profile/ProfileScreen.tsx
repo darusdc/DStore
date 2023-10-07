@@ -1,5 +1,5 @@
 import { View, Image, Modal } from 'react-native'
-import React, { useImperativeHandle, useRef, useState } from 'react'
+import React, { useCallback, useImperativeHandle, useRef, useState } from 'react'
 import Colors from '../../constants/Colors'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../App'
@@ -15,7 +15,7 @@ import { WelcomeScreenStyle } from '../onboarding/WelcomeScreenStyle'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { useDispatch } from 'react-redux'
 import { addUserLoginId } from '../../store/redux/action/UserLoginIdAction'
-import { CommonActions, useNavigation } from '@react-navigation/native'
+import { CommonActions, useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackNavigation } from '../../navigation/MainNavigation'
 import ImageCropPicker from 'react-native-image-crop-picker'
 import { PermissionsAndroid } from 'react-native'
@@ -24,7 +24,7 @@ const ProfileScreen = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation<StackNavigation>()
   const userLoginId = useSelector<RootState>((store) => store.userLoginIdReducer.userLoginId)
-  const User = realm.objects<User>("User").filtered(`id == ${userLoginId}`)[0]
+  const [User, setUser] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [showModalPP, setShowModalPP] = useState(false)
   const logoutRef = useRef<Modalize>()
@@ -111,21 +111,26 @@ const ProfileScreen = () => {
     messageImage()
   }
 
+  useFocusEffect(useCallback(() => {
+    setUser(realm.objects<User>("User").filtered(`id == ${userLoginId}`)[0])
+  },[]))
+
   return (
     <View style={profileScreenStyles.mainContainer}>
       <View style={{ alignItems: 'center', marginTop: 55 }}>
         <View style={{ flexDirection: 'row' }}>
           {User?.profileImage ? 
           <Image source={{ uri: User?.profileImage }} 
-          style={{width:72, height:72, borderRadius:100}}
+          style={profileScreenStyles.photoContainer}
           />
             :
-            <SmallText text={User?.fullname.split(' ')[0][0].toUpperCase()}
+            <SmallText text={User?.fullname.split(' ').map((v)=> {return v[0]})}
               style={profileScreenStyles.textProfileContainer} />
           }
           <Button
             iconName='camera'
             iconSize={16}
+            type='feather'
             iconColor={Colors.PRIMARY}
             containerStyle={profileScreenStyles.changeProfilePicContainer}
             onPress={() => { profileImageRef.current.open() }}
@@ -140,16 +145,19 @@ const ProfileScreen = () => {
           description='See & edit your profile'
           iconName='person'
           iconColor={Colors.PRIMARY}
+          onPress={() => {navigation.navigate('EditProfile')}}
         />
         <FeatureList title='History Transaction'
           description='See your history transaction on DStore'
           iconName='cart'
           iconColor={Colors.PRIMARY}
+          onPress={() => {navigation.navigate('HistoryTransaction')}}
         />
         <FeatureList title='Change Password'
           description='Change your password account'
           iconName='lock-closed'
           iconColor={Colors.PRIMARY}
+          onPress={() => {navigation.navigate('ChangePassword')}}
         />
       </View>
       <View>
@@ -204,21 +212,21 @@ const ProfileScreen = () => {
           >
             <FeatureList title='Pick from camera'
               iconName='camera'
-              iconSize={6}
-              titleStyle={{ fontSize: 14, fontWeight: '500' }}
+              titleStyle={profileScreenStyles.titleStyle}
               onPress={() => onClickCamera()}
+              containerStyle={{height:60, paddingVertical:10}}
             />
             <FeatureList title='Choose from gallery'
               iconName='folder'
-              iconSize={1}
-              titleStyle={{ fontSize: 14, fontWeight: '500' }}
+              titleStyle={profileScreenStyles.titleStyle}
               onPress={() => onClickGallery()}
+              containerStyle={{height:60, paddingVertical:10}}
             />
             <FeatureList title='Delete photo'
               iconName='trash'
-              iconSize={6}
-              titleStyle={{ fontSize: 14, fontWeight: '500' }}
+              titleStyle={profileScreenStyles.titleStyle}
               onPress={() => onClickDelete()}
+              containerStyle={{height:60, paddingVertical:10}}
             />
           </Modalize>
         </GestureHandlerRootView>

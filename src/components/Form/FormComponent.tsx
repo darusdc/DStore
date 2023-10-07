@@ -13,10 +13,11 @@ type arg = {
     containerStyle?: StyleProp<ViewStyle>
     textStyle?: StyleProp<TextStyle>
     secureTextEntry?: boolean
+    textContent? : string
 }
 const FormComponent = (props: arg) => {
     const [showPassword, setShowPassword] = useState(true)
-    const { title, placeholder, required, containerStyle, textStyle, onBlur, onChangeText, secureTextEntry } = props
+    const { title, placeholder, required, containerStyle, textStyle, onBlur, onChangeText, secureTextEntry, textContent } = props
     
     useEffect(()=>{
         setShowPassword(!secureTextEntry)
@@ -24,18 +25,26 @@ const FormComponent = (props: arg) => {
 
     return (
         <View style={[containerStyle]}>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row'}}>
                 <MediumText text={title} />
                 {required ? <SmallText text=' *' style={{ color: 'red' }} /> : null}
             </View>
 
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomWidth: 0.5, borderBottomColor: Colors.GRAY }}>
+            <View style={{ 
+                flexDirection: 'row', 
+                alignItems: 'center', 
+                justifyContent: 'space-between',
+                borderBottomWidth: 0.5, 
+                borderBottomColor: Colors.GRAY 
+
+                }}>
 
                 <TextInput placeholder={placeholder || `Enter your ${title}`}
                     onBlur={onBlur}
                     onChangeText={onChangeText}
                     secureTextEntry={!showPassword}
                     style={[{ flex: 1, height: 40 }, textStyle]}
+                    value={textContent}
                 />
                 {secureTextEntry ?
 

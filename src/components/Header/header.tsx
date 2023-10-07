@@ -56,6 +56,7 @@ const Header = (props: arg) => {
                 {isShowRightIcon ?
                     <Button iconName={rightIcon}
                         containerStyle={{ ...headerStyle.button, ...headerStyle.rightButton }}
+                        type='feather'
                         iconStyle={headerStyle.iconButton}
                     />
                     : null

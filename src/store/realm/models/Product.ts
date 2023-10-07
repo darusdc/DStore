@@ -10,7 +10,7 @@ export class Product extends Realm.Object<Product> {
     images: Realm.List<ProductImage>
     description: string
     isLike: boolean
-    likeNumbers?: number
+    likeNumber?: number
 
     static schema : Realm.ObjectSchema = {
         name: 'Product',

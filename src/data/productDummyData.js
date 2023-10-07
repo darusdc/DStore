@@ -12,7 +12,8 @@ export const productData = [
       { "id": 4, "link": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_13_green_3_4.jpg" },
     ],
     "description": "The latest iPhone with advanced features.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 2,
@@ -27,7 +28,8 @@ export const productData = [
       { "id": 4, "link": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//94/MTA-56070461/samsung_samsung_galaxy_s21_fe_smartphone_-8-256gb-_-_starter_pack_telkomsel_bundling_max_full05_ndkkp1d5.jpg" }
     ],
     "description": "Powerful Android smartphone.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 3,
@@ -41,7 +43,8 @@ export const productData = [
       { "id": 3, "link": "https://m.media-amazon.com/images/I/51cw28iR7+L._AC_SX679_.jpg" },
     ],
     "description": "High-performance laptop for professionals.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 4,
@@ -54,7 +57,8 @@ export const productData = [
       { "id": 2, "link": "https://i5.walmartimages.com/asr/95eb92d4-3fa5-4128-9be1-820904dada60.7b0b2522bcec1f3501beed2ce5f377f4.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" }
     ],
     "description": "Stylish and lightweight ultrabook.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 5,
@@ -69,7 +73,8 @@ export const productData = [
       { "id": 4, "link": "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4OVb6?ver=9377&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true" },
     ],
     "description": "Compact and versatile Windows tablet.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 11,
@@ -83,7 +88,8 @@ export const productData = [
       { "id": 3, "link": "https://cf-images.dustin.eu/cdn-cgi/image/format=auto,quality=75,width=828,,fit=contain/image/d200001001698533/sony-xperia-1-iv-256gb-dobbelt-sim-svart.png" },
     ],
     "description": "Flagship Android smartphone with advanced camera.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 12,
@@ -96,7 +102,8 @@ export const productData = [
       { "id": 2, "link": "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/xps-notebooks/xps-13-9320/media-gallery/xs9320t-cnb-00050rf115-sl.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=698&qlt=100,1&resMode=sharp2&size=698,402&chrss=full" }
     ],
     "description": "Premium ultrabook with InfinityEdge display.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 13,
@@ -109,7 +116,8 @@ export const productData = [
       { "id": 2, "link": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c07065421.png" }
     ],
     "description": "Versatile 2-in-1 Chromebook for work and play.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 14,
@@ -122,7 +130,8 @@ export const productData = [
       { "id": 2, "link": "https://down-id.img.susercontent.com/file/id-11134207-7r98p-llkcvq3olxzref" }
     ],
     "description": "Stylish and powerful laptop for content creators.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 15,
@@ -135,7 +144,8 @@ export const productData = [
       { "id": 2, "link": "https://images.tokopedia.net/img/cache/700/attachment/2019/6/10/43737554/43737554_b2ff1ee8-52f0-4dcd-b530-49396f95ec81.jpg.webp?ect=4g" }
     ],
     "description": "Budget-friendly Android tablet with detachable keyboard.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 16,
@@ -149,7 +159,8 @@ export const productData = [
       { "id": 3, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/c/0/c08279096_1.png" }
     ],
     "description": "Premium 2-in-1 laptop with stunning OLED display.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 17,
@@ -162,7 +173,8 @@ export const productData = [
       { "id": 2, "link": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_se_3_midnight_5_4.jpg" }
     ],
     "description": "Compact and affordable iPhone with A15 Bionic chip.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 18,
@@ -175,7 +187,8 @@ export const productData = [
       { "id": 2, "link": "https://images.samsung.com/is/image/samsung/id/galaxy-note20/gallery/id-galaxy-tab-s7-t875-sm-t875nzkaxid-lperspectivemysticblack-278581892?$684_547_PNG$" }
     ],
     "description": "High-end Android tablet for productivity and entertainment.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 19,
@@ -188,7 +201,8 @@ export const productData = [
       { "id": 2, "link": "https://images-cdn.ubuy.co.id/63b395b7dc92305f6d6e5b40-microsoft-sculpt-wireless-ergonomic.jpg" }
     ],
     "description": "Comfortable and ergonomic keyboard for long hours of typing.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 20,
@@ -201,7 +215,8 @@ export const productData = [
       { "id": 2, "link": "https://www.sony.co.uk/image/72714b46643f29c63c7ff6d94561878a?fmt=pjpeg&wid=1200&hei=470&bgcolor=F1F5F9&bgc=F1F5F9" }
     ],
     "description": "Compact flagship smartphone with exceptional camera capabilities.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 21,
@@ -214,7 +229,8 @@ export const productData = [
       { "id": 2, "link": "https://id-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/8/H/8H5V4PA-11_T1691464759.png" }
     ],
     "description": "Business convertible laptop with high-security features.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 22,
@@ -227,7 +243,8 @@ export const productData = [
       { "id": 2, "link": "https://images.tokopedia.net/img/cache/700/OJWluG/2023/8/2/12322bdc-19fc-4ab8-a571-48fb791fcf3f.jpg.webp?ect=4g" }
     ],
     "description": "Powerful gaming laptop with Ryzen processor.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 23,
@@ -240,7 +257,8 @@ export const productData = [
       { "id": 2, "link": "https://cdn.eraspace.com/media/catalog/product/i/p/iphone_14_pro_deep_purple_7_9.jpg" }
     ],
     "description": "Pro-level iPhone with advanced camera and performance.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 24,
@@ -253,7 +271,8 @@ export const productData = [
       { "id": 2, "link": "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/5/7/837690f8-2f04-4e28-8e82-36586f1a7aba.jpg.webp?ect=3g" }
     ],
     "description": "Slim and lightweight laptop for on-the-go professionals.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 25,
@@ -266,7 +285,8 @@ export const productData = [
       { "id": 2, "link": "https://down-id.img.susercontent.com/file/5127fe8bb4679d6706ca6a617cf61f5b" }
     ],
     "description": "Compact and portable Bluetooth mouse.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 26,
@@ -279,7 +299,8 @@ export const productData = [
       { "id": 2, "link": "https://sony.scene7.com/is/image/sonyglobalsolutions/1-wf1000xm4-mobile?$productIntroPlatemobile$&fmt=png-alpha" }
     ],
     "description": "Premium wireless earbuds with noise cancellation.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 27,
@@ -292,7 +313,8 @@ export const productData = [
       { "id": 2, "link": "https://www.concept-phones.com/wp-content/uploads/2016/02/Sony-Xperia-Z5-Tablet-Ultra-concept-2-490x375.jpg" }
     ],
     "description": "High-end Android tablet with stunning display.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 28,
@@ -305,7 +327,8 @@ export const productData = [
       { "id": 2, "link": "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/inspiron-notebooks/14-7420/media-gallery/notebook-inspiron-7420-nt-green-gallery-5.psd?fmt=png-alpha&pscan=auto&scl=1&hei=402&wid=616&qlt=100,1&resMode=sharp2&size=616,402&chrss=full" }
     ],
     "description": "Affordable laptop for everyday use.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 29,
@@ -318,7 +341,8 @@ export const productData = [
       { "id": 2, "link": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c06297847.png" }
     ],
     "description": "Docking station for increased connectivity.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 30,
@@ -331,7 +355,8 @@ export const productData = [
       { "id": 2, "link": "https://www.hp.com/content/dam/sites/worldwide/personal-computers/consumer/gaming/omen/15-laptop-intel/ThreeSided_Image_Desktop.png" }
     ],
     "description": "Gaming laptop with high-refresh-rate display.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 31,
@@ -344,7 +369,8 @@ export const productData = [
       { "id": 2, "link": "https://dlcdnwebimgs.asus.com/gain/916521d5-0135-4aec-a801-8bdd31473ff9/w800" }
     ],
     "description": "Affordable and stylish laptop for everyday tasks.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 32,
@@ -357,7 +383,8 @@ export const productData = [
       { "id": 2, "link": "https://p1-ofp.static.pub/fes/cms/2023/02/10/m2x90er7aq4issqfzku0vuli4086vv761445.png" }
     ],
     "description": "Premium ultrabook with a durable design for business professionals.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 33,
@@ -370,7 +397,8 @@ export const productData = [
       { "id": 2, "link": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08542233.png" }
     ],
     "description": "Full HD monitor for enhanced productivity.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 34,
@@ -383,7 +411,8 @@ export const productData = [
       { "id": 2, "link": "https://example.com/iphone14_2.jpg" }
     ],
     "description": "Advanced iPhone with A15 Bionic chip.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 35,
@@ -396,7 +425,8 @@ export const productData = [
       { "id": 110, "link": "https://example.com/galaxy_book_s_2.jpg" }
     ],
     "description": "Thin and lightweight laptop with long battery life.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 36,
@@ -409,7 +439,8 @@ export const productData = [
       { "id": 112, "link": "https://example.com/surface_pro8_2.jpg" }
     ],
     "description": "Versatile 2-in-1 tablet with Windows 11.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 37,
@@ -422,7 +453,8 @@ export const productData = [
       { "id": 114, "link": "https://example.com/dualshock4_2.jpg" }
     ],
     "description": "Wireless controller for PlayStation gaming.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 38,
@@ -435,7 +467,8 @@ export const productData = [
       { "id": 116, "link": "https://example.com/xperia10iii_2.jpg" }
     ],
     "description": "Mid-range smartphone with versatile camera capabilities.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 39,
@@ -448,7 +481,8 @@ export const productData = [
       { "id": 118, "link": "https://example.com/alienware_m15_2.jpg" }
     ],
     "description": "High-performance gaming laptop with Alienware design.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 40,
@@ -461,7 +495,8 @@ export const productData = [
       { "id": 120, "link": "https://example.com/spectre_folio_2.jpg" }
     ],
     "description": "Premium 2-in-1 laptop with leather finish.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 41,
@@ -474,7 +509,8 @@ export const productData = [
       {"id": 122, "link": "https://example.com/envy_x360_2.jpg"}
     ],
     "description": "Convertible laptop with AMD Ryzen processor.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 42,
@@ -487,7 +523,8 @@ export const productData = [
       {"id": 124, "link": "https://example.com/chromebook_flip_c434_2.jpg"}
     ],
     "description": "Premium Chromebook with a versatile design.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 43,
@@ -500,7 +537,8 @@ export const productData = [
       {"id": 126, "link": "https://example.com/alienware_m15_r6_2.jpg"}
     ],
     "description": "Gaming laptop with high-performance graphics and a sleek design.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 44,
@@ -513,7 +551,8 @@ export const productData = [
       {"id": 128, "link": "https://example.com/hp_wireless_keyboard_2.jpg"}
     ],
     "description": "Wireless keyboard for comfortable typing.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 45,
@@ -526,7 +565,8 @@ export const productData = [
       {"id": 130, "link": "https://example.com/iphone14promax_2.jpg"}
     ],
     "description": "Maximized performance and camera capabilities.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 46,
@@ -539,7 +579,8 @@ export const productData = [
       {"id": 132, "link": "https://example.com/galaxy_tab_a7_2.jpg"}
     ],
     "description": "Affordable Android tablet for entertainment.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 47,
@@ -552,7 +593,8 @@ export const productData = [
       {"id": 134, "link": "https://example.com/arc_mouse_2.jpg"}
     ],
     "description": "Sleek and portable Bluetooth mouse.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 48,
@@ -565,7 +607,8 @@ export const productData = [
       {"id": 136, "link": "https://example.com/wh1000xm4_2.jpg"}
     ],
     "description": "High-quality noise-canceling headphones for music lovers.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 49,
@@ -578,7 +621,8 @@ export const productData = [
       {"id": 138, "link": "https://example.com/xperia1iv_2.jpg"}
     ],
     "description": "Flagship Android smartphone with impressive display.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   },
   {
     "id": 50,
@@ -591,6 +635,7 @@ export const productData = [
       {"id": 140, "link": "https://example.com/precision15_2.jpg"}
     ],
     "description": "Workstation laptop for professional use.",
-    "isLike": false
+    "isLike": false,
+    "likeNumbers": 0
   }
 ]
