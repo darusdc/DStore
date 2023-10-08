@@ -102,10 +102,10 @@ return (
         />
         <Button
           containerStyle={[homeScreenStyles.heartButton, { flex: 1 }]}
-          iconName={product.isLike ? 'heart' : 'heart-outlined'}
+          iconName={product?.isLike ? 'heart' : 'heart-outlined'}
           type='entypo'
           iconSize={16}
-          iconStyle={{ color: product.isLike ? 'red' : 'black' }}
+          iconStyle={{ color: product?.isLike ? 'red' : 'black' }}
           onPress={() => onPressHeart(item.id)}
         />
         <SmallText text={likeNumbers?.toString() || "0"} />

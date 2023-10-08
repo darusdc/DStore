@@ -8,8 +8,17 @@ import { SmallText } from '../../components/Text'
 import { registerStyles } from '../onboarding/RegisterScreenStyle'
 import Button from '../../components/Button/button'
 import { WelcomeScreenStyle } from '../onboarding/WelcomeScreenStyle'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../App'
+import { realm } from '../../store/realm'
+import { User } from '../../store/realm/models/User'
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigation } from '../../navigation/MainNavigation'
 
 const ChangePasswordScreen = () => {
+  const userLoginId = useSelector<RootState>((store) => store.userLoginIdReducer.userLoginId)
+  const user = realm.objects<User>('User').filtered(`id == ${userLoginId}`)[0]
+  const navigation = useNavigation<StackNavigation>()
   const changePasswordValidation = yup.object().shape({
     oldPassword: yup.string()
       .min(8)
@@ -17,11 +26,24 @@ const ChangePasswordScreen = () => {
     newPassword: yup.string()
       .min(8)
       .matches(RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})"), "Password must include lowercase, uppercase, symbol, and number"),
-    confirmationNewPassword: yup.string().oneOf([yup.ref('password')], "your password is different").required("Please input your password again"),
+    confirmationNewPassword: yup.string().oneOf([yup.ref('newPassword')], "your password is different").required("Please input your password again"),
   })
-
-  const onClickSubmit = (data) => {
-
+  type passwordData = {
+    oldPassword: string
+    newPassword: string
+    confirmationNewPassword: string
+  }
+  const onClickSubmit = (data : passwordData) => {
+    if (data.oldPassword === user.password) {
+      realm.write(() => {
+        user.password = data.newPassword
+      })
+      alert('Password successfully changed!')
+      navigation.navigate('HomeTab')
+    } else {
+      alert('Old password is incorrect')
+    }
+    
   }
   return (
     <View style={{flex: 1}}>

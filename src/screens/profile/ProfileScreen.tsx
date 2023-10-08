@@ -124,7 +124,7 @@ const ProfileScreen = () => {
           style={profileScreenStyles.photoContainer}
           />
             :
-            <SmallText text={User?.fullname.split(' ').map((v)=> {return v[0]})}
+            <SmallText text={User?.fullname.split(' ').map((v)=> {return v[0].toUpperCase()})}
               style={profileScreenStyles.textProfileContainer} />
           }
           <Button
