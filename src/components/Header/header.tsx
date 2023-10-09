@@ -1,5 +1,5 @@
-import { Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { NativeSyntheticEvent, Text, TextInputSubmitEditingEventData, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/Feather'
 import { headerStyle } from './headerStyle'
 import { SearchBar } from '@rneui/themed'
@@ -12,11 +12,13 @@ type arg = {
      * The icon will shown up on the right side your header
      * <Header rightIcon='heart'/>
      */
-    rightIcon?: 'heart' | 'trash',
+    rightIcon?: 'heart' | 'trash-bin-outline',
     isShowRightIcon?: boolean,
     isStackScreen?: boolean,
     isSearchBarShow?: boolean,
-    isTransparent?: boolean
+    onChangeText?: (keyword: string) => void
+    onRightIconClick?: () => void
+    onSubmitEditing?: (e : NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void
 }
 const Header = (props: arg) => {
     const { title,
@@ -24,18 +26,18 @@ const Header = (props: arg) => {
         isShowRightIcon,
         isStackScreen,
         isSearchBarShow,
-        isTransparent } = props;
+        onChangeText = () => { },
+        onRightIconClick,
+        onSubmitEditing
+    } = props;
 
+    const [keyword, setKeyword] = useState('')
     const navigation = useNavigation()
     return (
         <View style={headerStyle.container}>
-            {isSearchBarShow ? null :
+            {isSearchBarShow || !isStackScreen ? null :
                 <View style={headerStyle.secondContainer}>
-                    {isStackScreen ?
-                        <Icon.Button name='arrow-left' onPress={() => { navigation.goBack() }} style={headerStyle.button} color={'black'} size={30} backgroundColor={'white'} />
-                        :
-                        null}
-
+                    <Icon.Button name='arrow-left' onPress={() => { navigation.goBack() }} style={headerStyle.button} color={'black'} size={30} backgroundColor={'white'} />
                 </View>
             }
             {isSearchBarShow && title != "" ?
@@ -43,10 +45,19 @@ const Header = (props: arg) => {
                     <SearchBar placeholder='Search item here..'
                         inputContainerStyle={headerStyle.searchBarInnerContainer}
                         containerStyle={headerStyle.searchBarContainerStyle}
+                        onChangeText={(text) => {
+                            setKeyword(text)
+                            onChangeText(text)
+                        }}
+                        onSubmitEditing={(e) => {
+                            onSubmitEditing(e)
+                            setKeyword('')
+                        }}
+                        value={keyword}
                     />
                 </View>
                 :
-                <View style={headerStyle.textTitleContainer}>
+                <View style={[headerStyle.textTitleContainer, !isStackScreen ? { marginHorizontal: 10 } : null]}>
                     <Text style={headerStyle.heading}>{title}</Text>
                 </View>
             }
@@ -55,9 +66,10 @@ const Header = (props: arg) => {
             <View style={headerStyle.secondContainer}>
                 {isShowRightIcon ?
                     <Button iconName={rightIcon}
-                        containerStyle={{ ...headerStyle.button, ...headerStyle.rightButton }}
-                        type='feather'
+                        containerStyle={[headerStyle.button, headerStyle.rightButton, rightIcon === "heart" ? { borderWidth: 1 } : { borderWidth: 0 }]}
+                        type={rightIcon === "heart" ? 'feather' : 'ionicon'}
                         iconStyle={headerStyle.iconButton}
+                        onPress={onRightIconClick}
                     />
                     : null
                 }

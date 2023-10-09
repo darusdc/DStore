@@ -3,8 +3,14 @@ import React from 'react'
 import Header from '../../components/Header/header'
 import { LargeText, SmallText } from '../../components/Text'
 import Colors from '../../constants/Colors'
+import Button from '../../components/Button/button'
+import { WelcomeScreenStyle } from '../onboarding/WelcomeScreenStyle'
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigation } from '../../navigation/MainNavigation'
+import EmptyList from '../../components/EmptyList/EmptyList'
 
 const HistoryTransactionScreen = () => {
+    const navigation = useNavigation<StackNavigation>()
     return (
         <View>
             <Header
@@ -12,22 +18,21 @@ const HistoryTransactionScreen = () => {
                 isStackScreen
             />
             <FlatList
-            data={[]} 
-            ListEmptyComponent={
-                <View style={{flex:1, alignItems:'center', marginVertical:200}}>
-                    <Image 
-                    source={require('../../assets/images/bag.png')}
-                    style={{flex:1, width: 118, height: 118}}
+                data={[]}
+                ListEmptyComponent={
+                    <EmptyList
+                        imageSource={require('../../assets/images/bag.png')}
+                        heading='No orders yet'
+                        desc='When you buy an item, your order about it will appear here.'
+                        buttonCaption='Shop Now'
+                        onPress={() => { navigation.navigate('HomeTab') }}
                     />
-                    <LargeText text='No orders yet' style={{fontSize: 24}}/>
-                    <SmallText text='When you buy an item, your order about it will appear here.' style={{color: Colors.GRAY_TEXT}}/>
-                </View>
-            }
-            renderItem={(item) => (
-                <View>
-                    
-                </View>
-            )}
+                }
+                renderItem={(item) => (
+                    <View>
+
+                    </View>
+                )}
             />
         </View>
     )

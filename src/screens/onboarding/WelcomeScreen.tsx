@@ -50,7 +50,7 @@ const WelcomeScreen = () => {
                     />
                     <Button 
                     text='Login as guest' 
-                    textStyle={[WelcomeScreenStyle.secondaryTextButton, {textDecorationLine:'underline', marginBottom:5}]}
+                    textStyle={[WelcomeScreenStyle.secondaryTextButton, {textDecorationLine:'underline', marginTop:20}]}
                     onPress={() => {navigation.navigate('HomeTab')}}
                     />
                 </View>

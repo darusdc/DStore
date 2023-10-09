@@ -9,5 +9,6 @@ export default {
     STAR: "#F6790A",
     DIVIDER: "#EDEDED",
     BLACK_TEXT: "#0A0A0A",
-    GRAY_TEXT: '#404040'
+    GRAY_TEXT: '#404040',
+    CONTAINER: '#F5F5F5'
 }

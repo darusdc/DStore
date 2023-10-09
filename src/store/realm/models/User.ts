@@ -56,3 +56,16 @@ export class UserLoginId extends Realm.Object<UserLoginId>{
     }
 
 }
+
+export class SelectedAddress extends Realm.Object<SelectedAddress>{
+    addressId!: number
+    userId!:number
+
+    static schema = {
+        name: 'SelectedAddress',
+        properties: {
+            addressId: 'int',
+            userId:'int'
+        },
+    }
+}

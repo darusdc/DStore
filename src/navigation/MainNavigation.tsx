@@ -25,21 +25,29 @@ import { UserLoginId } from '../store/realm/models/User'
 import EditProfileScreen from '../screens/profile/EditProfileScreen'
 import ChangePasswordScreen from '../screens/profile/ChangePasswordScreen'
 import HistoryTransactionScreen from '../screens/profile/HistoryTransactionScreen'
+import FavoriteProductScreen from '../screens/home/FavoriteProductScreen'
 
 export type ScreenNames = [
-  "Welcome", 
-  "Login", 
-  "Register", 
-  "RegisterSuccess", 
-  "HomeTab", 
-  'Search', 
-  "Brand", 
-  'ProductDetail', 
+  "Welcome",
+  "Login",
+  "Register",
+  "RegisterSuccess",
+  "HomeTab",
+  'Search',
+  "Brand",
+  'ProductDetail',
   'EditProfile',
   'ChangePassword',
-  'HistoryTransaction'
+  'HistoryTransaction',
+  'FavoriteProduct'
 ] // type these manually
-export type RootStackParamList = Record<ScreenNames[number], undefined | {brandId: number} | {productId: number} | {title: string} | {userId: number}>
+export type RootStackParamList = Record<ScreenNames[number], undefined | 
+{ brandId: number } | 
+{ productId: number } | 
+{ title: string } |
+ { userId: number } |
+ { searchKeyword: string}
+ >
 export type StackNavigation = NavigationProp<RootStackParamList>;
 
 const Stack = createNativeStackNavigator()
@@ -110,6 +118,7 @@ const StackNav = (props: screenTrans) => {
       <Stack.Screen name='EditProfile' initialParams={{ userId: '' }} component={EditProfileScreen} />
       <Stack.Screen name='ChangePassword' initialParams={{ userId: '' }} component={ChangePasswordScreen} />
       <Stack.Screen name='HistoryTransaction' initialParams={{ userId: '' }} component={HistoryTransactionScreen} />
+      <Stack.Screen name='FavoriteProduct' component={FavoriteProductScreen} />
     </Stack.Navigator>
   )
 }
@@ -138,7 +147,8 @@ const TabScreenGroup = () => {
           component={HomeScreen}
           options={{
             tabBarIcon: ({ focused }) => (
-              <Icon name="home-outline"
+              <Icon name={focused ? 'home' : "home-outline"}
+                size={20}
                 style={{ color: focused ? Colors.PRIMARY : Colors.GRAY }} />
             ),
             tabBarLabel: ({ focused }) => (
@@ -154,7 +164,8 @@ const TabScreenGroup = () => {
           component={SearchScreen}
           options={{
             tabBarIcon: ({ focused }) => (
-              <Icon name="search"
+              <Icon name={focused ? 'search-sharp' : "search"}
+                size={20}
                 style={{ color: focused ? Colors.PRIMARY : Colors.GRAY }} />
             ),
             tabBarLabel: ({ focused }) => (
@@ -170,7 +181,8 @@ const TabScreenGroup = () => {
           component={CartScreen}
           options={{
             tabBarIcon: ({ focused }) => (
-              <Icon name="cart-outline"
+              <Icon name={focused ? 'cart' : "cart-outline"}
+                size={20}
                 style={{ color: focused ? Colors.PRIMARY : Colors.GRAY }} />
             ),
             tabBarLabel: ({ focused }) => (
@@ -187,7 +199,8 @@ const TabScreenGroup = () => {
           component={ProfileScreen}
           options={{
             tabBarIcon: ({ focused }) => (
-              <Icon name="person-circle-outline"
+              <Icon name={focused ? 'person-circle' : "person-circle-outline"}
+                size={20}
                 style={{ color: focused ? Colors.PRIMARY : Colors.GRAY }} />
             ),
             tabBarLabel: ({ focused }) => (

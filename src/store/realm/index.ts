@@ -1,5 +1,5 @@
 import Realm from "realm";
-import { Address, User, UserLoginId } from "./models/User";
+import { Address, SelectedAddress, User, UserLoginId } from "./models/User";
 import { Brand } from "./models/Brand";
 import { Category } from "./models/Category";
 import { Order } from "./models/Order";
@@ -9,6 +9,7 @@ import { Shipping } from "./models/Shipping";
 import { InternalStorage, RamCapacity } from "./models/Size";
 import { FavoriteProduct } from "./models/FavoriteProduct";
 import { Cart } from './models/Cart'
+import { RatingData, RatingDetail } from "./models/Rating";
 const realmConfig : Realm.Configuration = {
   schema: [
     Brand,
@@ -24,7 +25,10 @@ const realmConfig : Realm.Configuration = {
     InternalStorage,
     RamCapacity,
     FavoriteProduct,
-    Cart
+    Cart,
+    SelectedAddress,
+    RatingData,
+    RatingDetail
   ],
   deleteRealmIfMigrationNeeded: true,
 };

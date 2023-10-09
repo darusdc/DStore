@@ -1,5 +1,5 @@
 import { FlatList, Image, SafeAreaView, TouchableOpacity, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Header from '../../components/Header/header'
 import Colors from '../../constants/Colors'
 import { LargeText, MediumText, SmallText } from '../../components/Text'
@@ -14,9 +14,11 @@ import { categoryData } from '../../data/categoryDummyData'
 import { shippingData } from '../../data/shippingDummyData'
 import { internalStorage, ramCapacity } from '../../data/sizeDummyData'
 import { realm } from '../../store/realm'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackNavigation } from '../../navigation/MainNavigation'
 import ProductComp from '../../components/Product/Product'
+import { Product, ProductImage } from '../../store/realm/models/Product'
+import { Brand } from '../../store/realm/models/Brand'
 
 type itemData = {
     id: number
@@ -24,7 +26,7 @@ type itemData = {
     idBrand: number
     name: string
     price: number
-    images: { id: number; link: string; }[]
+    images: Realm.List<ProductImage>
     description: string; isLike: boolean; likeNumbers?: number
 }
 
@@ -35,9 +37,11 @@ type itemBannerData = {
 
 const HomeScreen = () => {
     const navigation = useNavigation<StackNavigation>()
+    const Brands = realm.objects<Brand>('Brand')
+    const [allProduct, setAllProduct] = useState(realm.objects<Product>('Product'))
     const [products, setProducts] = useState([])
     const collectData = () => {
-        const products = realm.objects('Product')
+        const products = allProduct
         const maxIndex = Math.random() * (products.length - 4)
 
         setProducts(products.slice(maxIndex - 4, maxIndex))
@@ -57,6 +61,11 @@ const HomeScreen = () => {
         <ProductComp item={item} />
     )
 
+    const refreshAllData = () => {
+        const allProduct = realm.objects<Product>('Product')
+        setAllProduct(allProduct)
+    }
+
     useEffect(() => {
         insertDummyData('Brand', brands)
         insertDummyData('Category', categoryData)
@@ -66,9 +75,26 @@ const HomeScreen = () => {
         insertDummyData('RamCapacity', ramCapacity)
         collectData()
     }, [])
+
+    useFocusEffect(useCallback(
+        () => {
+            refreshAllData()
+        }, []
+    ))
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            <Header title='Homepage' isShowRightIcon isSearchBarShow rightIcon='heart' />
+            <Header title='Homepage'
+                isShowRightIcon
+                isSearchBarShow
+                rightIcon='heart'
+                onRightIconClick={() => { navigation.navigate('FavoriteProduct') }}
+                onSubmitEditing={(e) => {
+                    navigation.navigate('Search',
+                        { searchKeyword: e.nativeEvent.text })
+                    e.nativeEvent.text=''
+                }
+                }
+            />
             <ScrollView showsVerticalScrollIndicator>
                 <View style={{ ...homeScreenStyles.container }}>
                     <View style={homeScreenStyles.containerRowSpaceBetween}>
@@ -78,7 +104,9 @@ const HomeScreen = () => {
                         <Button
                             containerStyle={{ flex: 1, alignItems: 'flex-end' }}
                             text='Show All'
-                            textStyle={homeScreenStyles.showAllText} />
+                            textStyle={homeScreenStyles.showAllText}
+                            onPress={() => { navigation.navigate('Search') }}
+                        />
                     </View>
                     <View style={homeScreenStyles.weeklyProductContainer}>
                         <FlatList
@@ -89,7 +117,7 @@ const HomeScreen = () => {
                         <MediumText text='Shop by Brand' style={homeScreenStyles.headerText} />
                     </View>
                     <FlatList
-                        data={brands}
+                        data={Brands}
                         numColumns={3}
                         scrollEnabled={false}
                         contentContainerStyle={{ alignContent: 'space-around' }}
@@ -108,11 +136,12 @@ const HomeScreen = () => {
                             <Button
                                 containerStyle={{ flex: 1, alignItems: 'flex-end' }}
                                 text='Show All'
-                                textStyle={homeScreenStyles.showAllText} />
+                                textStyle={homeScreenStyles.showAllText}
+                                onPress={() => { navigation.navigate('Search') }} />
                         </View>
                         <FlatList
                             horizontal
-                            data={productData.slice(Math.random() * 5, Math.random() * 40)}
+                            data={[...allProduct].slice(Math.random() * 5, Math.random() * 40)}
                             contentContainerStyle={{ padding: 0 }}
                             renderItem={flatListRenderItem}
                         />
