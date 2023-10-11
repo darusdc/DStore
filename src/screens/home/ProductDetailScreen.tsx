@@ -138,7 +138,7 @@ const ProductDetailScreen = () => {
         if (item.isSelected === true) { return item }
       })
       [0].id
-      const ramCapacityId = filterSize('internal').filter((item) => {
+      const ramCapacityId = filterSize('ram').filter((item) => {
         if (item.isSelected === true) { return item }
       })
       [0].id
@@ -259,7 +259,6 @@ const ProductDetailScreen = () => {
   
   return (
     <Host>
-
 
       <View style={{ flex: 1 }}>
         <ImageBackground style={{ height: 300 }}
@@ -468,7 +467,7 @@ const ProductDetailScreen = () => {
                 <Button text='View Cart'
                   containerStyle={WelcomeScreenStyle.secondaryButtonContainer}
                   textStyle={WelcomeScreenStyle.secondaryTextButton}
-                  onPress={() => { navigation.navigate('HomeTab') }}
+                  onPress={() => { navigation.navigate('HomeTab', {screen: 'Cart'}) }}
                 />
               </View>
             </Modalize>

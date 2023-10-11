@@ -130,7 +130,7 @@ export const productData = [
   {
       "id": 10,
       "idCategory": 2, // Laptops
-      "idBrand": 5,    // Asus
+      "idBrand": 9,    // Asus
       "name": "Asus ROG Zephyrus G14",
       "price": 1599.99,
       "images": [
@@ -214,7 +214,7 @@ export const productData = [
   {
       "id": 16,
       "idCategory": 1, // Smartphones
-      "idBrand": 5,    // Asus
+      "idBrand": 9,    // Asus
       "name": "Asus ZenFone 8",
       "price": 499.99,
       "images": [
@@ -369,7 +369,7 @@ export const productData = [
   {
       "id": 27,
       "idCategory": 3, // Tablets
-      "idBrand": 5,    // Asus
+      "idBrand": 9,    // Asus
       "name": "Asus ROG Flow Z13",
       "price": 899.99,
       "images": [
@@ -595,7 +595,7 @@ export const productData = [
   {
       "id": 43,
       "idCategory": 3, // Tablets
-      "idBrand": 5,    // Asus
+      "idBrand": 9,    // Asus
       "name": "Asus ZenPad 8",
       "price": 199.99,
       "images": [
@@ -693,7 +693,7 @@ export const productData = [
   {
       "id": 50,
       "idCategory": 2, // Laptops
-      "idBrand": 5,    // Asus
+      "idBrand": 9,    // Asus
       "name": "Asus VivoBook S15",
       "price": 799.99,
       "images": [

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { EventArg, NavigationContainer, NavigationProp, useNavigation } from '@react-navigation/native'
+import { EventArg, NavigationContainer, NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import WelcomeScreen from '../screens/onboarding/WelcomeScreen'
 import HomeScreen from '../screens/home/HomeScreen'
@@ -15,7 +15,6 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import Colors from '../constants/Colors'
 import { TinyText } from '../components/Text'
 import SearchScreen from '../screens/home/SearchScreen'
-import CartScreen from '../screens/home/CartScreen'
 import ProfileScreen from '../screens/profile/ProfileScreen'
 import { realm } from '../store/realm'
 import Screen from '../screens/onboarding/Screen'
@@ -26,6 +25,8 @@ import EditProfileScreen from '../screens/profile/EditProfileScreen'
 import ChangePasswordScreen from '../screens/profile/ChangePasswordScreen'
 import HistoryTransactionScreen from '../screens/profile/HistoryTransactionScreen'
 import FavoriteProductScreen from '../screens/home/FavoriteProductScreen'
+import CartScreen from '../screens/cart/CartScreen'
+import CheckOutScreen from '../screens/cart/CheckOutScreen'
 
 export type ScreenNames = [
   "Welcome",
@@ -33,20 +34,21 @@ export type ScreenNames = [
   "Register",
   "RegisterSuccess",
   "HomeTab",
-  'Search',
   "Brand",
   'ProductDetail',
   'EditProfile',
   'ChangePassword',
   'HistoryTransaction',
-  'FavoriteProduct'
+  'FavoriteProduct',
+  'CheckOut'
 ] // type these manually
 export type RootStackParamList = Record<ScreenNames[number], undefined | 
 { brandId: number } | 
 { productId: number } | 
 { title: string } |
  { userId: number } |
- { searchKeyword: string}
+ { searchKeyword: string} |
+ { screen : string}
  >
 export type StackNavigation = NavigationProp<RootStackParamList>;
 
@@ -111,22 +113,21 @@ const StackNav = (props: screenTrans) => {
       <Stack.Screen name='Login' component={LoginScreen} />
       <Stack.Screen name='Register' component={RegisterScreen} />
       <Stack.Screen name='RegisterSuccess' component={RegisterSuccessScreen} />
-      <Stack.Screen name='HomeTab' component={TabScreenGroup} />
-      <Stack.Screen name='Search' initialParams={{ keyword: '', brand: '' }} component={SearchScreen} />
+      <Stack.Screen name='HomeTab' component={HomeScreenGroup} />
       <Stack.Screen name='Brand' initialParams={{ keyword: '', brand: '' }} component={BrandScreen} />
       <Stack.Screen name='ProductDetail' initialParams={{ brand: '' }} component={ProductDetailScreen} />
       <Stack.Screen name='EditProfile' initialParams={{ userId: '' }} component={EditProfileScreen} />
       <Stack.Screen name='ChangePassword' initialParams={{ userId: '' }} component={ChangePasswordScreen} />
       <Stack.Screen name='HistoryTransaction' initialParams={{ userId: '' }} component={HistoryTransactionScreen} />
       <Stack.Screen name='FavoriteProduct' component={FavoriteProductScreen} />
+      <Stack.Screen name='CheckOut' component={CheckOutScreen} />
     </Stack.Navigator>
   )
 }
 
-const TabScreenGroup = () => {
+const HomeScreenGroup = () => {
   const navigation = useNavigation<StackNavigation>()
   const { userLoginId } = useSelector((store: RootState) => store.userLoginIdReducer)
-
   const loginRequired = () => ({
     tabPress: (e: EventArg<"tabPress", true, undefined>) => {
       if (userLoginId === 0) {
@@ -140,7 +141,7 @@ const TabScreenGroup = () => {
       <Tab.Navigator
         screenOptions={{ headerShown: false }}
         sceneContainerStyle={{ backgroundColor: 'white' }}
-        initialRouteName='Home'
+        initialRouteName={'Home'}
       >
         <Tab.Screen
           name='Home'

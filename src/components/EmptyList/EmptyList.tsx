@@ -1,9 +1,10 @@
-import { View, Text, Image, ImageSourcePropType } from 'react-native'
+import { View, Image, ImageSourcePropType } from 'react-native'
 import React from 'react'
 import { LargeText, SmallText } from '../Text'
 import Button from '../Button/button'
 import { WelcomeScreenStyle } from '../../screens/onboarding/WelcomeScreenStyle'
 import Colors from '../../constants/Colors'
+import emptyStyles from './EmptyListStyle'
 
 type arg = {
     heading : string
@@ -16,7 +17,7 @@ type arg = {
 const EmptyList = (props : arg) => {
     const {heading, imageSource, desc, buttonCaption, onPress} = props
   return (
-    <View style={{ flex: 1, alignItems: 'center', marginVertical: 200, padding:8 }}>
+    <View style={emptyStyles.container}>
     <Image
       source={imageSource}
       style={{ flex: 1, width: 118, height: 118 }}

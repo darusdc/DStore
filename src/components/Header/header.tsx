@@ -5,6 +5,7 @@ import { headerStyle } from './headerStyle'
 import { SearchBar } from '@rneui/themed'
 import Button from '../Button/button'
 import { useNavigation } from '@react-navigation/native'
+import Colors from '../../constants/Colors'
 
 type arg = {
     title?: string,
@@ -19,6 +20,7 @@ type arg = {
     onChangeText?: (keyword: string) => void
     onRightIconClick?: () => void
     onSubmitEditing?: (e : NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void
+    disabledRightIcon?: boolean
 }
 const Header = (props: arg) => {
     const { title,
@@ -28,7 +30,8 @@ const Header = (props: arg) => {
         isSearchBarShow,
         onChangeText = () => { },
         onRightIconClick,
-        onSubmitEditing
+        onSubmitEditing,
+        disabledRightIcon
     } = props;
 
     const [keyword, setKeyword] = useState('')
@@ -68,8 +71,9 @@ const Header = (props: arg) => {
                     <Button iconName={rightIcon}
                         containerStyle={[headerStyle.button, headerStyle.rightButton, rightIcon === "heart" ? { borderWidth: 1 } : { borderWidth: 0 }]}
                         type={rightIcon === "heart" ? 'feather' : 'ionicon'}
-                        iconStyle={headerStyle.iconButton}
+                        iconStyle={{...headerStyle.iconButton, color: disabledRightIcon? Colors.GRAY: Colors.BLACK}}
                         onPress={onRightIconClick}
+                        disabled={disabledRightIcon}
                     />
                     : null
                 }

@@ -25,7 +25,7 @@ const HistoryTransactionScreen = () => {
                         heading='No orders yet'
                         desc='When you buy an item, your order about it will appear here.'
                         buttonCaption='Shop Now'
-                        onPress={() => { navigation.navigate('HomeTab') }}
+                        onPress={() => { navigation.navigate('HomeTab', { screen: 'Search'}) }}
                     />
                 }
                 renderItem={(item) => (
