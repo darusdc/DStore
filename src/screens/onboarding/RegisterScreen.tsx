@@ -67,7 +67,8 @@ const RegisterScreen = () => {
                         kelurahan: '',
                         subDistrict: '',
                         city: '',
-                        province: ''
+                        province: '',
+                        addressLabel:''
                     }]
                 });
                 realm.create('UserLoginId', {
@@ -96,7 +97,6 @@ const RegisterScreen = () => {
                 {({
                     handleBlur,
                     handleChange,
-                    handleReset,
                     handleSubmit,
                     setFieldValue,
                     errors,

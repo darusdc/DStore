@@ -30,6 +30,7 @@ export class Address extends Realm.Object<Address>{
     subDistrict!: string
     city!: string
     province!: string
+    addressLabel: string
     
     static schema = {
         name: 'Address',
@@ -39,7 +40,8 @@ export class Address extends Realm.Object<Address>{
             kelurahan: 'string',
             subDistrict: 'string',
             city: 'string',
-            province: 'string'
+            province: 'string',
+            addressLabel: 'string'
         },
     }
 }

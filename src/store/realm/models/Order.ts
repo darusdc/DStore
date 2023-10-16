@@ -3,8 +3,8 @@ import { User } from "./User"
 
 export class Order extends Realm.Object<Order> {
     id!: number
-    idUser: User
-    idShipping: Shipping
+    idUser: number
+    idShipping: number
     totalPrice: number
     deliveryFee: number
     serviceFee: number
@@ -14,8 +14,8 @@ export class Order extends Realm.Object<Order> {
         name: "Order",
         properties: {
             id: 'int',
-            idUser: 'User',
-            idShipping: 'Shipping',
+            idUser: 'int',
+            idShipping: 'int',
             totalPrice: 'float',
             deliveryFee: 'float',
             serviceFee: 'float',

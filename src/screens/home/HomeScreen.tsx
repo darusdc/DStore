@@ -91,7 +91,6 @@ const HomeScreen = () => {
                 onSubmitEditing={(e) => {
                     navigation.navigate('Search',
                         { searchKeyword: e.nativeEvent.text })
-                    e.nativeEvent.text=''
                 }
                 }
             />
@@ -105,7 +104,7 @@ const HomeScreen = () => {
                             containerStyle={{ flex: 1, alignItems: 'flex-end' }}
                             text='Show All'
                             textStyle={homeScreenStyles.showAllText}
-                            onPress={() => { navigation.navigate('Search') }}
+                            onPress={() => { navigation.navigate('HomeTab', {screen: 'Search'}) }}
                         />
                     </View>
                     <View style={homeScreenStyles.weeklyProductContainer}>
@@ -137,7 +136,7 @@ const HomeScreen = () => {
                                 containerStyle={{ flex: 1, alignItems: 'flex-end' }}
                                 text='Show All'
                                 textStyle={homeScreenStyles.showAllText}
-                                onPress={() => { navigation.navigate('Search') }} />
+                                onPress={() => { navigation.navigate('HomeTab', {screen:'Search'}) }} />
                         </View>
                         <FlatList
                             horizontal

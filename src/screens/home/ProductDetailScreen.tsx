@@ -44,6 +44,7 @@ const ProductDetailScreen = () => {
   const ratingRate = (ratingData?.rating / ratingData?.ratingDetail.length) | 0
   const [addCartSuccess, setaddCartSuccess] = useState(false)
   const showAddCartSuccessRef = useRef<Modalize>()
+  const [buyOrCartClick, setBuyOrCartClick]= useState('cart')
 
   const productDetailData = [
     'Category',
@@ -195,6 +196,22 @@ const ProductDetailScreen = () => {
     }
   }
 
+  const onClickBuyNow = () => { 
+    if (product.idCategory != 4) {
+      const internalStorageId = filterSize('internal').filter((item) => {
+        if (item.isSelected === true) { return item }
+      })
+      [0].id
+      const ramCapacityId = filterSize('ram').filter((item) => {
+        if (item.isSelected === true) { return item }
+      })
+      [0].id
+      navigation.navigate('CheckOut', {productId: product.id, internalStorageId, ramCapacityId})
+   } else {
+    navigation.navigate('CheckOut', {productId: product.id})
+   }
+  }
+
  
   const onClickHeart = () => {
     if (userLoginId) {
@@ -317,11 +334,23 @@ const ProductDetailScreen = () => {
               <Button text='Buy Now'
                 containerStyle={[WelcomeScreenStyle.primaryButtonContainer]}
                 textStyle={WelcomeScreenStyle.primaryTextButton}
+                onPress={() => {
+                  setBuyOrCartClick('buy')
+                  product.idCategory!=4 
+                  ? showItemRef.current?.open() 
+                  : onClickBuyNow()
+                }
+              }
               />
               <Button text='Add to Cart'
                 containerStyle={[WelcomeScreenStyle.secondaryButtonContainer]}
                 textStyle={WelcomeScreenStyle.secondaryTextButton}
-                onPress={() => { product.idCategory!=4 ? showItemRef.current?.open() : onClickAddCart() }}
+                onPress={() => { 
+                  setBuyOrCartClick('cart')
+                  product.idCategory!=4 ? 
+                  showItemRef.current?.open() 
+                  : 
+                  onClickAddCart() }}
               />
             </View>
           </View>
@@ -423,11 +452,19 @@ const ProductDetailScreen = () => {
                     })
                     [0]?.priceMultiplier).toFixed(2)}`} />
                 </View>
+                {buyOrCartClick === 'cart' ?   
                 <Button text='Add to cart!'
                   containerStyle={WelcomeScreenStyle.primaryButtonContainer}
                   textStyle={WelcomeScreenStyle.primaryTextButton}
                   onPress={() => onClickAddCart()}
                 />
+                :
+                <Button text='Buy Now'
+                  containerStyle={WelcomeScreenStyle.primaryButtonContainer}
+                  textStyle={WelcomeScreenStyle.primaryTextButton}
+                  onPress={() => onClickBuyNow()}
+                />
+              } 
                 <Button text='Cancel'
                   containerStyle={WelcomeScreenStyle.secondaryButtonContainer}
                   textStyle={WelcomeScreenStyle.secondaryTextButton}

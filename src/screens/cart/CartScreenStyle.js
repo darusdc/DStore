@@ -4,7 +4,7 @@ const { width, height } = Dimensions.get('window')
 
 const tilewidth = width / 3 - 30
 const cartStyles = StyleSheet.create({
-    tileImage: { width: tilewidth, height: 100, resizeMode: 'cover' },
+    tileImage: { width: tilewidth, resizeMode: 'cover' },
     itemName: { flex: 1, width: (width - tilewidth) - 20, marginBottom: -10 },
     buttonPlusMinus: {
         width: 32,
@@ -46,7 +46,10 @@ const cartStyles = StyleSheet.create({
     },
     checkoutButton: {
         width: tilewidth,
-        verticalAlign:'middle',
+        verticalAlign: 'middle',
+    },
+    buttonInactive: {
+        backgroundColor:Colors.GRAY
     },
     addressContainer: {
         flexDirection: 'row',
@@ -54,10 +57,13 @@ const cartStyles = StyleSheet.create({
         height: 40,
         backgroundColor: Colors.CONTAINER,
         alignItems: 'center',
-      },
-      cartItemContainer: {
-        maxHeight: height/1.4
-      }
+    },
+    cartItemContainer: {
+        maxHeight: height / 1.4
+    },
+    logoutButton : {
+        
+    }
 })
 
 export default cartStyles

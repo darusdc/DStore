@@ -27,6 +27,9 @@ import HistoryTransactionScreen from '../screens/profile/HistoryTransactionScree
 import FavoriteProductScreen from '../screens/home/FavoriteProductScreen'
 import CartScreen from '../screens/cart/CartScreen'
 import CheckOutScreen from '../screens/cart/CheckOutScreen'
+import SuccessOrderScreen from '../screens/cart/SuccessOrder'
+import AddAddressScreen from '../screens/cart/AddAddressScreen'
+import AddressListScreen from '../screens/cart/AddressListScreen'
 
 export type ScreenNames = [
   "Welcome",
@@ -40,15 +43,20 @@ export type ScreenNames = [
   'ChangePassword',
   'HistoryTransaction',
   'FavoriteProduct',
-  'CheckOut'
+  'CheckOut',
+  'SuccessOrder',
+  'AddAddress',
+  'SelectAddress',
+  'Search'
 ] // type these manually
 export type RootStackParamList = Record<ScreenNames[number], undefined | 
 { brandId: number } | 
-{ productId: number } | 
+{ productId: number} | {internalStorageId: number, ramCapacityId: number } | 
 { title: string } |
  { userId: number } |
  { searchKeyword: string} |
- { screen : string}
+ { screen : string} |
+ { orderId : number }
  >
 export type StackNavigation = NavigationProp<RootStackParamList>;
 
@@ -121,6 +129,10 @@ const StackNav = (props: screenTrans) => {
       <Stack.Screen name='HistoryTransaction' initialParams={{ userId: '' }} component={HistoryTransactionScreen} />
       <Stack.Screen name='FavoriteProduct' component={FavoriteProductScreen} />
       <Stack.Screen name='CheckOut' component={CheckOutScreen} />
+      <Stack.Screen name='SuccessOrder' component={SuccessOrderScreen} />
+      <Stack.Screen name='AddAddress' component={AddAddressScreen} />
+      <Stack.Screen name='SelectAddress' component={AddressListScreen} />
+      <Stack.Screen name='Search' component={SearchScreen}/>
     </Stack.Navigator>
   )
 }

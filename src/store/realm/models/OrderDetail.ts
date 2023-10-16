@@ -4,20 +4,20 @@ import { InternalStorage, RamCapacity } from "./Size"
 
 export class OrderDetail extends Realm.Object<OrderDetail> {
     id!: number
-    idOrder: Order
-    idProduct: Product
-    idInternalStorage?: InternalStorage
-    idRamCapacity?: RamCapacity
+    idOrder: number
+    idProduct: number
+    idInternalStorage?: number
+    idRamCapacity?: number
     price: number
     quantity: number
     static schema : Realm.ObjectSchema = {
         name: "OrderDetail",
         properties: {
             id: 'int',
-            idOrder: 'Order',
-            idProduct: 'Product',
-            idInternalStorage: 'InternalStorage?',
-            idRamCapacity: 'RamCapacity?',
+            idOrder: 'int',
+            idProduct: 'int',
+            idInternalStorage: 'int?',
+            idRamCapacity: 'int?',
             price: 'float',
             quantity: 'int'
         },
