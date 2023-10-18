@@ -16,23 +16,13 @@ const BrandScreen = () => {
     const productDB = realm.objects<Product>('Product').filtered(`idBrand == ${brandId}`)
     const [products, setProducts] = useState([...productDB])
     const [searchKeyword, setSearchKeyword] = useState('')
-    // const collectData = () => {
-    //     const productDB = realm.objects('Product').filtered(`idBrand == ${brandId}`)
-    //     setProducts([...productDB])
-    //     const maxIndex = productDB.length
-    //     console.log(productDB)
-    // }
+   
     const onChangeText = (searchKeyword: string) => {
         const data = productDB.filtered(`name CONTAINS[c] "${searchKeyword}"`)
         setSearchKeyword(searchKeyword)
         setProducts([...data])
     }
 
-    // useFocusEffect(useCallback(
-    //     () => {
-    //         collectData()
-    //     }, []
-    // ))
     return (
         <View style={{ flex: 1 }}>
             <Header
@@ -45,7 +35,7 @@ const BrandScreen = () => {
                 onChangeText={onChangeText}
                 value={searchKeyword}
             />
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1}}>
                 <FlatList
                     numColumns={2}
                     data={products}

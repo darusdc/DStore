@@ -26,7 +26,13 @@ import ProductList from '../../components/ProductList/ProductList'
 import { Host, Portal } from 'react-native-portalize'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { Modalize } from 'react-native-modalize'
-
+export type CartLike = {
+  idProduct: number,
+  idUser: unknown,
+  idInternalStorage?: number,
+  idRamCapacity?: number,
+  quantity: number
+}
 const CheckOutScreen = () => {
   const navigation = useNavigation<StackNavigation>()
   const route : RouteProp<{ params: {productId: number, internalStorageId: number, ramCapacityId: number} }>= useRoute()
@@ -99,7 +105,6 @@ const CheckOutScreen = () => {
     const idOrder = OrderData.length + 1
     let idOrderDetail = OrderDetails.length - 1
     if (addressId) {
-      console.log(new Date())
         realm.write(()=> {
           realm.create('Order', {
             id: idOrder,
@@ -142,7 +147,7 @@ const CheckOutScreen = () => {
     // navigation.navigate('SuccessOrder')
   }
 
-  const renderFlatList = ({ item }: { item: Cart & Realm.Object<unknown, never> } | {item : ArrayLike<Cart>}) => (
+  const renderFlatList = ({ item }: { item: Cart & Realm.Object<unknown, never> | CartLike }) => (
    <ProductList item={item} isCheckOut isShowPrice/>
   )
 
@@ -188,7 +193,7 @@ const CheckOutScreen = () => {
         {route.params?.productId? 
         <FlatList
         scrollEnabled={false}
-        data={buyNowCart}
+        data={[...buyNowCart]}
         ListEmptyComponent={
           <EmptyList
             imageSource={require('../../assets/images/bag.png')}
@@ -198,7 +203,7 @@ const CheckOutScreen = () => {
             onPress={() => { navigation.navigate('HomeTab', { screen: 'Search' }) }}
           />
         }
-        renderItem={renderFlatList}
+        renderItem={(item) => renderFlatList(item)}
       />
         :
         

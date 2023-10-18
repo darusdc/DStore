@@ -1,11 +1,11 @@
 import { View, Text, FlatList, Image } from 'react-native'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import Header from '../../components/Header/header'
 import { LargeText, SmallText } from '../../components/Text'
 import Colors from '../../constants/Colors'
 import Button from '../../components/Button/button'
 import { WelcomeScreenStyle } from '../onboarding/WelcomeScreenStyle'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { StackNavigation } from '../../navigation/MainNavigation'
 import EmptyList from '../../components/EmptyList/EmptyList'
 import { realm } from '../../store/realm'
@@ -37,12 +37,14 @@ const HistoryTransactionScreen = () => {
 
     const userLoginId = useSelector<RootState>((store) => store.userLoginIdReducer.userLoginId)
     const [historyTransactionDB, setHistoryTransactionDB] = useState(realm.objects<Order>('Order').filtered(`idUser == ${userLoginId}`))
-    console.log(historyTransactionDB[0].date)
     const getOrderItem = (orderId: number) => {
         const orderItem = realm.objects<OrderDetail>('OrderDetail').filtered(`idOrder == ${orderId}`)
-        console.log(orderItem)
         return orderItem
     }
+
+    useFocusEffect(useCallback(() => {
+        setHistoryTransactionDB(realm.objects<Order>('Order').filtered(`idUser == ${userLoginId}`))
+    },[]))
     return (
         <View style={{flex: 1}}>
             <Header
@@ -69,7 +71,9 @@ const HistoryTransactionScreen = () => {
                             />
                             <SmallText text={`#ORD-${item.date.getMonth()}${item.date.getFullYear()}${item.id.toString()}`} style={{ marginLeft: 5 }} />
                             <View style={{ alignItems: 'flex-end', width: '70%' }}>
-                                <SmallText text={`${month[item.date.getMonth()]} ${item.date.getDate()}, ${item.date.getFullYear()}`} style={{ fontWeight: 'bold', alignItems: 'flex-end' }} />
+                                <SmallText 
+                                text={`${month[item.date.getMonth()]} ${item.date.getDate()}, ${item.date.getFullYear()}`} 
+                                style={{ fontWeight: 'bold', alignItems: 'flex-end' }} />
                             </View>
                         </View>
                         <View style={HTstyles.FlatList_2}>

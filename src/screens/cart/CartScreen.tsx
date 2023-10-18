@@ -1,4 +1,4 @@
-import { View, Text, FlatList, Image, Alert, ScrollView, TouchableOpacity } from 'react-native'
+import { View, FlatList, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useCallback, useRef, useState } from 'react'
 import Header from '../../components/Header/header'
 import { Icon } from '@rneui/themed'
@@ -8,8 +8,8 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../App'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import Colors from '../../constants/Colors'
-import { LargeText, MediumText, SmallText, TinyText } from '../../components/Text'
-import { Address, SelectedAddress, User } from '../../store/realm/models/User'
+import { MediumText, SmallText, TinyText } from '../../components/Text'
+import { SelectedAddress, User } from '../../store/realm/models/User'
 import { StackNavigation } from '../../navigation/MainNavigation'
 import EmptyList from '../../components/EmptyList/EmptyList'
 import { Product } from '../../store/realm/models/Product'
@@ -33,7 +33,6 @@ const CartScreen = () => {
   const ramCapacity = realm.objects<RamCapacity>('RamCapacity')
   const [showModal, setShowModal] = useState(false)
   const logoutRef = useRef<Modalize>()
-  console.log(addressId)
   const refreshCart = () => {
     const carts = realm.objects<Cart>('Cart').filtered(`idUser == ${userLoginId}`)
     setCartItems(carts)
@@ -65,36 +64,6 @@ const CartScreen = () => {
     } else {
       return ramCapacity.filtered(`id ==${idSize}`)[0]
     }
-  }
-
-  const cartModified = (action: 'remove' | 'plus' | 'minus', item: Cart & Realm.Object<unknown, never>) => {
-    if (action === 'remove') {
-      realm.write(() => {
-        realm.delete(item)
-      })
-    } else if (action === 'minus') {
-      if (item.quantity < 2) {
-        Alert.alert('Remove Item', 'Do you want to remove this item?',
-          [{
-            text: 'Yes',
-            onPress: () => {
-              realm.write(() => {
-                realm.delete(item)
-              })
-              refreshCart()
-            }
-          }, { text: 'No', style: 'cancel' }])
-      } else {
-        realm.write(() => {
-          item.quantity--
-        })
-      }
-    } else {
-      realm.write(() => {
-        item.quantity++
-      })
-    }
-    refreshCart()
   }
 
   const renderFlatList = ({ item }: { item: Cart & Realm.Object<unknown, never> }) => (
@@ -141,7 +110,7 @@ const CartScreen = () => {
           ListEmptyComponent={
             <EmptyList
               imageSource={require('../../assets/images/bag.png')}
-              heading='Your cart stil empty'
+              heading='Your cart still empty'
               desc='Find your favorite items and add to cart before check out.'
               buttonCaption='Find Products'
               onPress={() => { navigation.navigate('HomeTab', { screen: 'Search' }) }}

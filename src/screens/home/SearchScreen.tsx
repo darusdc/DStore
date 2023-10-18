@@ -5,11 +5,14 @@ import { realm } from '../../store/realm'
 import ProductComp from '../../components/Product/Product'
 import { Product } from '../../store/realm/models/Product'
 import EmptyList from '../../components/EmptyList/EmptyList'
-import { RouteProp, useFocusEffect, useRoute } from '@react-navigation/native'
+import { RouteProp, useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
+import { StackNavigation } from '../../navigation/MainNavigation'
 
 const SearchScreen = () => {
-  const route : RouteProp<{ params: { searchKeyword: string } }>  = useRoute()
+  const navigation = useNavigation<StackNavigation>()
+  const route : RouteProp<{ params: { searchKeyword: string, type: string } }>  = useRoute()
   const searchKeyword = route?.params?.searchKeyword
+  const type = route?.params?.type
   const productDB = realm.objects<Product>('Product')
   const [products, setProducts] = useState([...productDB])
 
@@ -20,16 +23,16 @@ const SearchScreen = () => {
    }
 
   useFocusEffect(useCallback(() => {
+      onChangeText(searchKeyword || '')
+  }, [searchKeyword, type]))
+
+  useFocusEffect(useCallback(() => {
     console.log(searchKeyword)
-    if (searchKeyword !== '' && searchKeyword !== undefined) {
-      onChangeText(searchKeyword)
-    }
-  }, [searchKeyword]))
+}, [searchKeyword]))
   return (
     <View style={{flex: 1}}>
         <Header
           isSearchBarShow
-          title='all Pro'
           onChangeText={onChangeText}
         />
       <View style={{flex: 1}}>
@@ -42,10 +45,13 @@ const SearchScreen = () => {
             desc='We cannot find what you looking for, try to use other keyword or reset keyword'
             buttonCaption='Reset Keyword'
             imageSource={require('../../assets/images/bag-cross.png')}
+            onPress={() => {onChangeText('')
+            navigation.setParams({searchKeyword : ''})
+          }}
             />
           }
+          pagingEnabled
           renderItem={({ item }) => (
-
             <ProductComp item={item} />
           )
           }

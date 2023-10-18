@@ -79,6 +79,7 @@ const HomeScreen = () => {
     useFocusEffect(useCallback(
         () => {
             refreshAllData()
+            navigation.setParams({searchKeyword:""})
         }, []
     ))
     return (
@@ -91,20 +92,19 @@ const HomeScreen = () => {
                 onSubmitEditing={(e) => {
                     navigation.navigate('Search',
                         { searchKeyword: e.nativeEvent.text })
-                }
-                }
+                }}
             />
             <ScrollView showsVerticalScrollIndicator>
                 <View style={{ ...homeScreenStyles.container }}>
                     <View style={homeScreenStyles.containerRowSpaceBetween}>
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, marginHorizontal: 10 }}>
                             <MediumText text='Popular Item' style={homeScreenStyles.headerText} />
                         </View>
                         <Button
                             containerStyle={{ flex: 1, alignItems: 'flex-end' }}
                             text='Show All'
                             textStyle={homeScreenStyles.showAllText}
-                            onPress={() => { navigation.navigate('HomeTab', {screen: 'Search'}) }}
+                            onPress={() => { navigation.navigate('Search', {searchKeyword:''}) }}
                         />
                     </View>
                     <View style={homeScreenStyles.weeklyProductContainer}>
@@ -136,7 +136,7 @@ const HomeScreen = () => {
                                 containerStyle={{ flex: 1, alignItems: 'flex-end' }}
                                 text='Show All'
                                 textStyle={homeScreenStyles.showAllText}
-                                onPress={() => { navigation.navigate('HomeTab', {screen:'Search'}) }} />
+                                onPress={() => { navigation.navigate('Search', {searchKeyword:''}) }} />
                         </View>
                         <FlatList
                             horizontal

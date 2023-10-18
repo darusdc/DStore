@@ -13,7 +13,7 @@ export const homeScreenStyles = StyleSheet.create({
     container: {
         flex: 1,
         marginBottom: 10,
-        padding: 15
+        paddingHorizontal: 10
     },
     secondContainer: {
         width,
@@ -21,7 +21,7 @@ export const homeScreenStyles = StyleSheet.create({
     },
     containerRowSpaceBetween: {
         flexDirection: 'row',
-        alignContent: 'space-between'
+        alignContent: 'space-between',
     },
     imageBackgroundStyle: {
         width,
@@ -42,8 +42,10 @@ export const homeScreenStyles = StyleSheet.create({
         // borderWidth:1,
         // borderColor: Colors.BORDER_COLOR,
         // padding: 8,
-        margin: 8,
         // width: width,
+        marginHorizontal: 10,
+        // marginRight:5,
+        marginVertical: 5,
         borderRadius: 5,
         flex: 1,
         zIndex: 0,

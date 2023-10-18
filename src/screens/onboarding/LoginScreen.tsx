@@ -37,7 +37,6 @@ const LoginScreen = () => {
 
                 })
                 dispatch(addUserLoginId(userAccount.id))
-                console.log(userAccount.id)
                 navigation.dispatch(CommonActions.reset(
                     {
                         index: 1,
@@ -113,6 +112,11 @@ const LoginScreen = () => {
                 )}
 
             </Formik>
+            <Button text='Not have account? click here' 
+                onPress={() => navigation.navigate('Register')}
+                containerStyle={{alignItems:'center'}}
+                textStyle={WelcomeScreenStyle.secondaryTextButton}
+            />
         </View>
     )
 }

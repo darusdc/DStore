@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { EventArg, NavigationContainer, NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import { EventArg, NavigationContainer, NavigationProp, useNavigation } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import WelcomeScreen from '../screens/onboarding/WelcomeScreen'
 import HomeScreen from '../screens/home/HomeScreen'
@@ -56,7 +56,8 @@ export type RootStackParamList = Record<ScreenNames[number], undefined |
  { userId: number } |
  { searchKeyword: string} |
  { screen : string} |
- { orderId : number }
+ { orderId : number } |
+ { type?: 'click-tab'}
  >
 export type StackNavigation = NavigationProp<RootStackParamList>;
 
@@ -67,7 +68,6 @@ const MainNavigation = () => {
   const [isUserLogin, setIsUserLogin] = useState(false)
   const [token, setToken] = useState(0)
   const dispatch = useDispatch()
-  const globalUserLoginId = useSelector((store: RootState) => store.userLoginIdReducer.userLoginId)
 
   const setUserLoginId = () => {
     const data = realm.objects<UserLoginId>("UserLoginId")[0]
@@ -75,7 +75,6 @@ const MainNavigation = () => {
     if (data?.userId) {
       dispatch(addUserLoginId(data.userId))
       setToken(data?.userId)
-      console.log(data?.userId)
     }
     setIsUserLogin(true)
   }
@@ -83,10 +82,6 @@ const MainNavigation = () => {
   useEffect(() => {
     setUserLoginId()
   }, [])
-
-  useEffect(() => {
-    console.log(globalUserLoginId)
-  }, [globalUserLoginId])
 
   if (!isUserLogin) {
     return <Screen />
@@ -175,6 +170,7 @@ const HomeScreenGroup = () => {
         <Tab.Screen
           name='Search'
           component={SearchScreen}
+          initialParams={{searchKeyword: ''}}
           options={{
             tabBarIcon: ({ focused }) => (
               <Icon name={focused ? 'search-sharp' : "search"}
@@ -185,8 +181,14 @@ const HomeScreenGroup = () => {
               <TinyText text='Search'
                 style={{ color: focused ? Colors.PRIMARY : Colors.GRAY }}
               />
-            )
+            ),
           }}
+          listeners={() => ({
+            tabPress: (e) => {
+                e.preventDefault();
+                navigation.navigate('HomeTab', { screen: "Search" });
+            },
+        })}
         />
 
         <Tab.Screen

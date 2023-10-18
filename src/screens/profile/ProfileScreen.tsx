@@ -19,6 +19,7 @@ import { CommonActions, useFocusEffect, useNavigation } from '@react-navigation/
 import { StackNavigation } from '../../navigation/MainNavigation'
 import ImageCropPicker from 'react-native-image-crop-picker'
 import { PermissionsAndroid } from 'react-native'
+import { Product } from '../../store/realm/models/Product'
 
 const ProfileScreen = () => {
   const dispatch = useDispatch()
@@ -32,8 +33,10 @@ const ProfileScreen = () => {
 
   const onClickLogout = () => {
     const userLogin = realm.objects<UserLoginId>('UserLoginId')[0]
+    const product = realm.objects<Product>('Product')
     realm.write(() => {
       realm.delete(userLogin)
+      product.forEach((item) => {item.isLike = false})
     })
     dispatch(addUserLoginId(0))
     navigation.dispatch(CommonActions.reset(
@@ -124,7 +127,7 @@ const ProfileScreen = () => {
           style={profileScreenStyles.photoContainer}
           />
             :
-            <SmallText text={User?.fullname.split(' ').map((v)=> {return v[0].toUpperCase()})}
+            <SmallText text={User?.fullname.split(' ').map((v)=> {return v[0]?.toUpperCase()})}
               style={profileScreenStyles.textProfileContainer} />
           }
           <Button
@@ -136,7 +139,7 @@ const ProfileScreen = () => {
             onPress={() => { profileImageRef.current.open() }}
           />
         </View>
-        <MediumText text={User?.fullname.toUpperCase()} style={{ fontWeight: 'bold' }} />
+        <MediumText text={User?.fullname?.toUpperCase()} style={{ fontWeight: 'bold' }} />
         <MediumText text={User?.email} style={{ color: Colors.GRAY, marginTop: -5 }} />
       </View>
       <View>

@@ -9,9 +9,10 @@ import ProductListStyles from './ProductListStyle'
 import { MediumText, SmallText, TinyText } from '../Text'
 import Button from '../Button/button'
 import { OrderDetail } from '../../store/realm/models/OrderDetail'
+import { CartLike } from '../../screens/cart/CheckOutScreen'
 
 type arg = {
-    item : Cart & Realm.Object<unknown, never> | OrderDetail & Realm.Object<unknown, never>
+    item : Cart & Realm.Object<unknown, never> | OrderDetail & Realm.Object<unknown, never> | CartLike
     refreshCart?: () => void
     isCheckOut?: boolean
     isShowPrice? : boolean
@@ -26,7 +27,7 @@ const ProductList = (props : arg) => {
         return products.filtered(`id == ${idProduct}`)[0]
     }
 
-    const getProductPrice = (item : Cart & Realm.Object<unknown, never> | OrderDetail & Realm.Object<unknown, never>) => {
+    const getProductPrice = (item : Cart & Realm.Object<unknown, never> | OrderDetail & Realm.Object<unknown, never> | CartLike) => {
         if (getProductData(item.idProduct).idCategory != 4) {
             return ((getProductData(item.idProduct).price *
                 getSizeData('internal', item.idInternalStorage)?.priceMultiplier *
@@ -44,7 +45,7 @@ const ProductList = (props : arg) => {
         }
     }
 
-    const cartModified = (action: 'remove' | 'plus' | 'minus', item: Cart & Realm.Object<unknown, never> | OrderDetail & Realm.Object<unknown, never>) => {
+    const cartModified = (action: 'remove' | 'plus' | 'minus', item: Cart & Realm.Object<unknown, never> | OrderDetail & Realm.Object<unknown, never> | CartLike) => {
         if (action === 'remove') {
             realm.write(() => {
                 realm.delete(item)
@@ -85,7 +86,7 @@ const ProductList = (props : arg) => {
                   style={isShowPrice? ProductListStyles.quantityText:ProductListStyles.quantityTextAlter}
                 />
         
-                <View style={{ paddingLeft: 10 }}>
+                <View style={{padding: 10}}>
                   <MediumText text={getProductData(item.idProduct).name} style={ProductListStyles.itemName} />
                   {getProductData(item.idProduct).idCategory != 4 ?
                     <SmallText text={

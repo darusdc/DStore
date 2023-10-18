@@ -30,7 +30,7 @@ const Header = (props: arg) => {
         isSearchBarShow,
         onChangeText = () => { },
         onRightIconClick,
-        onSubmitEditing,
+        onSubmitEditing = () => { },
         disabledRightIcon
     } = props;
 
@@ -54,7 +54,7 @@ const Header = (props: arg) => {
                         }}
                         onSubmitEditing={(e) => {
                             onSubmitEditing(e)
-                            setKeyword('')
+                            setKeyword(e.nativeEvent.text)
                         }}
                         value={keyword}
                     />

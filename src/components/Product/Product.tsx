@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../App";
 import { Product, ProductImage } from "../../store/realm/models/Product";
 import productStyles from "./ProductStyle";
+import { generateId } from "../../utils/GenerateId";
 
 type itemData = {
   id: number
@@ -38,11 +39,17 @@ const ProductComp = ({ item }: { item: itemData }) => {
     const favoriteProducts = realm.objects<FavoriteProduct>('FavoriteProduct').filtered(`idUser == ${userLoginId}`)
     const product = realm.objects<Product>('Product').filtered(`id == ${item.id}`)[0]
 
+    realm.write(()=>{
+      product.isLike = favoriteProducts[0]?.idProducts.has(item.id) || false
+    })
+
     setProduct(product)
     setFavoriteProducts(favoriteProducts)
     setLikeNumber(product.likeNumber)
   }
+
   const onPressHeart = (productId: number) => {
+    
     if (userLoginId) {
       const favoriteList = favoriteProducts[0]
       if (favoriteList){
@@ -60,7 +67,7 @@ const ProductComp = ({ item }: { item: itemData }) => {
       } else {
         realm.write(() => {
           realm.create('FavoriteProduct',{
-            id: favoriteProducts.length + 1,
+            id: generateId('FavoriteProduct'),
             idUser: userLoginId,
             idProducts: [productId]
           })
@@ -77,7 +84,7 @@ const ProductComp = ({ item }: { item: itemData }) => {
     refreshData()
   }, []))
 return (
-  <TouchableOpacity style={[homeScreenStyles.weeklyProductContainer,{flex: 0, margin: 10}]} onPress={() => { onPress(item.id) }}>
+  <TouchableOpacity style={[homeScreenStyles.weeklyProductContainer,{flex: 0}]} onPress={() => { onPress(item.id) }}>
     <Image
       style={homeScreenStyles.flatListItem}
       source={{ uri: item.images[0].link }}

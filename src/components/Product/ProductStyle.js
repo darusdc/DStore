@@ -6,7 +6,7 @@ const itemSpace = 10
 const itemWidth = (width - (itemSpace * itemShowNumber + 1)) / itemShowNumber
 
 const productStyles = StyleSheet.create({
-    textName: {width:itemWidth, color: Colors.SECONDARY}
+    textName: {width:itemWidth -10, color: Colors.SECONDARY}
 })
 
 export default productStyles

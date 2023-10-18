@@ -38,7 +38,6 @@ const AddAddressScreen = () => {
 
     const onClickAdd = (data) => {
         // const { street, kelurahan, subDistrict, city, province } = data
-        console.log(data)
         const userData = realm.objects<User>('User').filtered(`id == ${userLoginId}`)[0]
         realm.write(() => {
             userData.addresses.push(
