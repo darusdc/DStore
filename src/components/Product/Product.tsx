@@ -84,9 +84,9 @@ const ProductComp = ({ item }: { item: itemData }) => {
     refreshData()
   }, []))
 return (
-  <TouchableOpacity style={[homeScreenStyles.weeklyProductContainer,{flex: 0}]} onPress={() => { onPress(item.id) }}>
+  <TouchableOpacity style={[productStyles.weeklyProductContainer,{flex: 0}]} onPress={() => { onPress(item.id) }}>
     <Image
-      style={homeScreenStyles.flatListItem}
+      style={productStyles.flatListItem}
       source={{ uri: item.images[0].link }}
     />
     <View

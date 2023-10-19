@@ -79,7 +79,6 @@ const HomeScreen = () => {
     useFocusEffect(useCallback(
         () => {
             refreshAllData()
-            navigation.setParams({searchKeyword:""})
         }, []
     ))
     return (
@@ -113,7 +112,7 @@ const HomeScreen = () => {
                             data={products}
                             renderItem={flatListRenderItem}
                         />
-                        <MediumText text='Shop by Brand' style={homeScreenStyles.headerText} />
+                        <MediumText text='Shop by Brand' style={[homeScreenStyles.headerText, {marginHorizontal: 10}]} />
                     </View>
                     <FlatList
                         data={Brands}
@@ -131,7 +130,7 @@ const HomeScreen = () => {
                         style={homeScreenStyles.weeklyProductContainer}
                     >
                         <View style={homeScreenStyles.containerRowSpaceBetween}>
-                            <MediumText text="New Product" style={homeScreenStyles.headerText} />
+                            <MediumText text="New Product" style={[homeScreenStyles.headerText, {marginHorizontal: 10}]} />
                             <Button
                                 containerStyle={{ flex: 1, alignItems: 'flex-end' }}
                                 text='Show All'

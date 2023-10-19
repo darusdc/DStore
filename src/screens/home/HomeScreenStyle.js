@@ -29,10 +29,6 @@ export const homeScreenStyles = StyleSheet.create({
         alignItems: 'center',
 
     },
-    pagination: {
-        marginHorizontal: 4,
-        width, height: 10
-    },
     flatListItem: {
         width: itemWidth - 10,
         height: itemHeight,
@@ -43,8 +39,9 @@ export const homeScreenStyles = StyleSheet.create({
         // borderColor: Colors.BORDER_COLOR,
         // padding: 8,
         // width: width,
-        marginHorizontal: 10,
+        // marginHorizontal: 10,
         // marginRight:5,
+        marginLeft:-10,
         marginVertical: 5,
         borderRadius: 5,
         flex: 1,

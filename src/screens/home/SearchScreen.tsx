@@ -10,9 +10,8 @@ import { StackNavigation } from '../../navigation/MainNavigation'
 
 const SearchScreen = () => {
   const navigation = useNavigation<StackNavigation>()
-  const route : RouteProp<{ params: { searchKeyword: string, type: string } }>  = useRoute()
+  const route : RouteProp<{ params: { searchKeyword: string } }>  = useRoute()
   const searchKeyword = route?.params?.searchKeyword
-  const type = route?.params?.type
   const productDB = realm.objects<Product>('Product')
   const [products, setProducts] = useState([...productDB])
 
@@ -24,11 +23,7 @@ const SearchScreen = () => {
 
   useFocusEffect(useCallback(() => {
       onChangeText(searchKeyword || '')
-  }, [searchKeyword, type]))
-
-  useFocusEffect(useCallback(() => {
-    console.log(searchKeyword)
-}, [searchKeyword]))
+  }, [searchKeyword]))
   return (
     <View style={{flex: 1}}>
         <Header
@@ -50,7 +45,6 @@ const SearchScreen = () => {
           }}
             />
           }
-          pagingEnabled
           renderItem={({ item }) => (
             <ProductComp item={item} />
           )

@@ -251,7 +251,7 @@ const CheckOutScreen = () => {
       <View style={{ ...checkOutstyles.subtotalContainer, paddingHorizontal: 10 }}>
         <View style={{ flexDirection: 'row' }}>
           {userData.profileImage ?
-            <Image source={{ uri: userData.profileImage }} style={{ width: 40, height: 40 }} />
+            <Image source={{ uri: userData.profileImage }} style={checkOutstyles.picProfileContainer} />
             :
             <SmallText text={userData?.fullname.split(' ').map((v) => { return v[0].toUpperCase() })}
               style={profileScreenStyles.textProfileContainer} />
@@ -267,9 +267,10 @@ const CheckOutScreen = () => {
         <MediumText text={getSelectedShipping().shippingName} />
         </TouchableOpacity>
         {addressId? 
-          <MediumText text={`${userData.addresses[addressId].street},
-          ${userData.addresses[addressId].city}, ${userData.addresses[addressId].province}`}
+        <TouchableOpacity onPress={() => { navigation.navigate('SelectAddress') }}>
+          <MediumText text={`${userData.addresses[addressId].street}, ${userData.addresses[addressId].kelurahan}, ${userData.addresses[addressId].subDistrict}, ${userData.addresses[addressId].city} ,${userData.addresses[addressId].province}`}
                   />
+        </TouchableOpacity>
                   :  
         <TouchableOpacity onPress={()=> {navigation.navigate('AddAddress')}}>
           <MediumText text='Add new address' style={{textDecorationLine:'underline'}}/>

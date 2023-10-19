@@ -18,7 +18,7 @@ const checkOutstyles = StyleSheet.create({
     cartItemContainer: {
         maxHeight: height / 3.6
     },
-    divider: { borderWidth: 1, marginHorizontal: 10, borderColor: Colors.DIVIDER },
+    divider: { borderTopWidth: 0.5, marginHorizontal: 10 },
     addressContainer: {
         marginTop: '-12%',
         flexDirection: 'row',
@@ -27,6 +27,11 @@ const checkOutstyles = StyleSheet.create({
         backgroundColor: Colors.CONTAINER,
         alignItems: 'center',
     },
+    picProfileContainer: {
+        width: 40, height: 40,
+        marginVertical:20,
+        marginHorizontal: 5
+    }
 })
 
 export default checkOutstyles

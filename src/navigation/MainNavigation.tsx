@@ -57,7 +57,8 @@ export type RootStackParamList = Record<ScreenNames[number], undefined |
  { searchKeyword: string} |
  { screen : string} |
  { orderId : number } |
- { type?: 'click-tab'}
+ { type?: 'click-tab'} |
+ { addressId : number } 
  >
 export type StackNavigation = NavigationProp<RootStackParamList>;
 
